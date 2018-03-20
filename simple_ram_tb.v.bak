@@ -1,0 +1,18 @@
+module simple_ram_tb();
+
+	reg [7:0] data;
+	reg [4:0] addr;
+
+	reg wr;
+	reg clk;
+	
+	wire [7:0] q;
+	
+	simple_ram simple_ram(
+	.data(data)
+	.addr(addr)
+	
+	.wr(wr)
+	.clk(clk)
+	.q(q));
+	

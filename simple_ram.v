@@ -1,0 +1,25 @@
+module simple_ram (
+	input [7:0] data, //data bus
+	input [4:0] addr, //memory adress
+	//wr is 1 - Write mode
+	//wr is 0 - Read mode
+	input wr, clk,
+	output [7:0] q
+);
+
+	reg [7:0] ram [31:0]; //storage of data
+	reg [4:0] addr_reg;   //adress of data
+	
+	always @(posedge clk)
+	begin
+		if (wr)
+			ram[addr] <= data;
+		else
+			addr_reg <= addr;
+	end
+	
+	assign q = ram[addr_reg];
+	
+endmodule
+	
+	
