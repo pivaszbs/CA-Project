@@ -1,28 +1,35 @@
 module simple_cash (
 	input [31:0] data,
 	input [31:0] address,
-	input is_write,
+	input wr,
 	input clock,
 	output [31:0] output_data
 );
 
 	reg [31:0] memory [31:0];
 	reg [31:0] data_address;	
+
+	simple_ram simple_ram(
+	.data(data),
+	.addr(addr),
+	
+	.wr(wr),
+	.clk(clk),
+	.q(q));
 	
 	always @(posedge clock)
 	begin
-		if (is_write)
+		if (wr)
 		begin
 			memory[address] <= data;
-			simple_ram ram_memory(data, address, 1, clock, output_data);
+			#100;
 		end
 		else
 		begin			
-			if (address[0] == 1)			
+			if (address[0] == 1'b1)			
 			begin
-				simple_ram ram_memory(data, address, 0, clock, output_data);
-				memory[address] <= output_data
-				address[0] <= 1'b1;
+				memory[address] <= output_data;
+				#100;
 			end
 			data_address <= address;			
 		end
