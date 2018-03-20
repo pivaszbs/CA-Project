@@ -1,14 +1,14 @@
 module simple_ram (
-	input [7:0] data, //data bus
-	input [4:0] addr, //memory adress
+	input [31:0] data, //data bus
+	input [31:0] addr, //memory adress
 	//wr is 1 - Write mode
 	//wr is 0 - Read mode
 	input wr, clk,
-	output [7:0] q
+	output [31:0] q
 );
 
-	reg [7:0] ram [31:0]; //storage of data
-	reg [4:0] addr_reg;   //adress of data
+	reg [31:0] ram [31:0]; //storage of data
+	reg [31:0] addr_reg;   //adress of data
 	
 	always @(posedge clk)
 	begin
