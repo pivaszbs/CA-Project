@@ -1,1 +1,1 @@
-Warning (10268): Verilog HDL information at simple_cash.v(25): always construct contains both blocking and non-blocking assignments File: C:/Repositories/CA-Project/simple_cash.v Line: 25
+Warning (10268): Verilog HDL information at simple_cash.v(26): always construct contains both blocking and non-blocking assignments File: C:/Repositories/CA-Project/simple_cash.v Line: 26

@@ -1,8 +1,7 @@
 module simple_ram_tb();
-
+	
 	reg [31:0] data;
 	reg [31:0] addr;
-
 	reg wr;
 	reg clk;
 	
@@ -10,31 +9,25 @@ module simple_ram_tb();
 	
 	simple_ram simple_ram(
 	.data(data),
-	.addr(addr),
-	
+	.addr(addr),	
 	.wr(wr),
 	.clk(clk),
-	.q(q));
-	
-	initial
-	begin
-		clk = 1'b1;
-		forever #50 clk = -clk;
-	end
+	.q(q));	
 	
 	initial
 	begin
 		data = 8'h01;
-		addr = 5'd0;
+		addr = 5'b00000;
 		wr = 1'b1;
-		#100;
+		#50;
+		data = 8'h01;
+		addr = 5'b00000;
+		wr = 1'b0;
+		if (q != data)
+			$display("Error");
+		#50;
 	end
 	
-	initial
-	begin
-		addr = 5'd0;
-		wr = 1'b0;
-		#100;
-	end
+	always #50 clk = ~clk;
 	
 endmodule 

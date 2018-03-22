@@ -3,7 +3,7 @@ module simple_ram (
 	input [4:0] addr, //memory adress
 	//wr is 1 - Write mode
 	//wr is 0 - Read mode
-	input wr, clk,
+	input wr, clk, enable,
 	output [31:0] q
 );
 
@@ -12,10 +12,11 @@ module simple_ram (
 	
 	always @(posedge clk)
 	begin
-		if (wr)
-			ram[addr] <= data;
-		else
-			addr_reg <= addr;
+		if (enable)
+			if (wr)
+				ram[addr] <= data;
+			else
+				addr_reg <= addr;
 	end
 	
 	assign q = ram[addr];

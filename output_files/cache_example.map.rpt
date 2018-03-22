@@ -1,5 +1,5 @@
 Analysis & Synthesis report for cache_example
-Thu Mar 22 04:08:03 2018
+Thu Mar 22 22:53:22 2018
 Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
 
 
@@ -37,7 +37,7 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Failed - Thu Mar 22 04:08:03 2018           ;
+; Analysis & Synthesis Status        ; Failed - Thu Mar 22 22:53:22 2018           ;
 ; Quartus Prime Version              ; 17.1.0 Build 590 10/25/2017 SJ Lite Edition ;
 ; Revision Name                      ; cache_example                               ;
 ; Top-level Entity Name              ; cache_example                               ;
@@ -164,7 +164,7 @@ refer to the applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
-    Info: Processing started: Thu Mar 22 04:07:41 2018
+    Info: Processing started: Thu Mar 22 22:52:57 2018
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off cache_example -c cache_example
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
@@ -176,15 +176,17 @@ Info (12021): Found 1 design units, including 1 entities, in source file simple_
     Info (12023): Found entity 1: simple_cash File: C:/Repositories/CA-Project/simple_cash.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file cache_example.v
     Info (12023): Found entity 1: cache_example File: C:/Repositories/CA-Project/cache_example.v Line: 1
-Info (12127): Elaborating entity "cache_example" for the top level hierarchy
-Error (10119): Verilog HDL Loop Statement error at cache_example.v(22): loop with non-constant loop condition must terminate within 250 iterations File: C:/Repositories/CA-Project/cache_example.v Line: 22
-Error (12153): Can't elaborate top-level user hierarchy
+Error (10137): Verilog HDL Procedural Assignment error at simple_cash.v(30): object "enable" on left-hand side of assignment must have a variable data type File: C:/Repositories/CA-Project/simple_cash.v Line: 30
+Error (10137): Verilog HDL Procedural Assignment error at simple_cash.v(35): object "enable" on left-hand side of assignment must have a variable data type File: C:/Repositories/CA-Project/simple_cash.v Line: 35
+Error (10161): Verilog HDL error at simple_cash.v(39): object "current_addr" is not declared. Verify the object name is correct. If the name is correct, declare the object. File: C:/Repositories/CA-Project/simple_cash.v Line: 39
+Error (10137): Verilog HDL Procedural Assignment error at simple_cash.v(41): object "q" on left-hand side of assignment must have a variable data type File: C:/Repositories/CA-Project/simple_cash.v Line: 41
+Error (10137): Verilog HDL Procedural Assignment error at simple_cash.v(45): object "enable" on left-hand side of assignment must have a variable data type File: C:/Repositories/CA-Project/simple_cash.v Line: 45
 Info (144001): Generated suppressed messages file C:/Repositories/CA-Project/output_files/cache_example.map.smsg
-Error: Quartus Prime Analysis & Synthesis was unsuccessful. 2 errors, 1 warning
+Error: Quartus Prime Analysis & Synthesis was unsuccessful. 5 errors, 1 warning
     Error: Peak virtual memory: 628 megabytes
-    Error: Processing ended: Thu Mar 22 04:08:04 2018
-    Error: Elapsed time: 00:00:23
-    Error: Total CPU time (on all processors): 00:00:49
+    Error: Processing ended: Thu Mar 22 22:53:22 2018
+    Error: Elapsed time: 00:00:25
+    Error: Total CPU time (on all processors): 00:00:54
 
 
 +------------------------------------------+
