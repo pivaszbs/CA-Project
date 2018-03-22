@@ -1,6 +1,6 @@
 module simple_ram (
 	input [31:0] data, //data bus
-	input [31:0] addr, //memory adress
+	input [4:0] addr, //memory adress
 	//wr is 1 - Write mode
 	//wr is 0 - Read mode
 	input wr, clk,
@@ -18,7 +18,7 @@ module simple_ram (
 			addr_reg <= addr;
 	end
 	
-	assign q = ram[addr_reg];
+	assign q = ram[addr];
 	
 endmodule
 	

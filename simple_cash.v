@@ -1,41 +1,57 @@
 module simple_cash (
 	input [31:0] data,
-	input [31:0] address,
+	input [4:0] addr,
 	input wr,
-	input clock,
-	output [31:0] output_data
+	input clk,
+	output [31:0] q
 );
 
-	reg [31:0] memory [31:0];
-	reg [31:0] data_address;	
-
+	reg [3:0] data_array [31:0];
+	reg [3:0] valid_array [0:0];
+	reg [3:0] tag_array [2:0];
+	reg [3:0] index_array [1:0];
+	reg [2:0] tag;
+	reg [1:0] index;
+	reg [4:0] current_addr;
+	reg [31:0] current_data;
+	
 	simple_ram simple_ram(
-	.data(data),
-	.addr(addr),
+			.data(data),
+			.addr(addr),
+			.wr(wr),
+			.clk(clk),
+			.q(q));
 	
-	.wr(wr),
-	.clk(clk),
-	.q(q));
-	
-	always @(posedge clock)
+	always @(posedge clk)
 	begin
-		if (wr)
-		begin
-			memory[address] <= data;
-			#100;
+		tag = addr >> 2;
+		index = addr;
+		current_addr = {tag, index};
+		
+		if (wr)		
+		begin									
+			valid_array[index] <= 0;
 		end
 		else
-		begin			
-			if (address[0] == 1'b1)			
+		begin
+			if (valid_array[index] && addr == current_addr)
 			begin
-				memory[address] <= output_data;
-				#100;
+				current_data = data_array[index];
 			end
-			data_address <= address;			
+			else
+			begin
+				
+				
+				current_data = q;
+				
+				data_array[index] = q;
+				tag_array[index] = tag;
+				valid_array[index] = 1;						
+			end
 		end
 	end
 	
-	assign output_data = memory[data_address];
+	assign q = current_data;
 	
 endmodule
 
