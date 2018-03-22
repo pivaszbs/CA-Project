@@ -1,7 +1,7 @@
-Analysis & Synthesis Status : Successful - Fri Mar 23 01:16:12 2018
+Analysis & Synthesis Status : Successful - Fri Mar 23 01:58:40 2018
 Quartus Prime Version : 17.1.0 Build 590 10/25/2017 SJ Lite Edition
 Revision Name : cache_example
-Top-level Entity Name : cache_example
+Top-level Entity Name : simple_ram_tb
 Family : MAX 10
 Total logic elements : 0
     Total combinational functions : 0

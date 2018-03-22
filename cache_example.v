@@ -1,4 +1,4 @@
-module cache_example(output out);
+module cache_example(output out);	
 	
 	reg [31:0] data;
 	reg [31:0] addr;
