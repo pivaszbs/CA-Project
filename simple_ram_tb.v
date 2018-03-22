@@ -17,15 +17,27 @@ module simple_ram_tb();
 	initial
 	begin
 		data = 8'h01;
-		addr = 5'b00000;
+		addr = 32'b0;
 		wr = 1'b1;
 		#50;
 		data = 8'h01;
-		addr = 5'b00000;
+		addr = 32'b01;
 		wr = 1'b0;
 		if (q != data)
 			$display("Error");
 		#50;
+		
+		data = 8'h02;
+		addr = 32'd02;
+		#100;
+		
+		addr = 32'd01;
+		wr = 1'b0;
+		#100;
+		
+		addr = 32'd02;
+		#100;
+		
 	end
 	
 	always #50 clk = ~clk;
