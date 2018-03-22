@@ -1,0 +1,84 @@
+# Reading C:/altera/12.1/modelsim_ase/tcl/vsim/pref.tcl 
+# do cache_example_run_msim_rtl_verilog.do 
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Copying C:\altera\12.1\modelsim_ase\win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# ** Warning: Copied C:\altera\12.1\modelsim_ase\win32aloem/../modelsim.ini to modelsim.ini.
+#          Updated modelsim.ini.
+# 
+# vlog -vlog01compat -work work +incdir+C:/Repositories/CA-Project {C:/Repositories/CA-Project/simple_ram.v}
+# Model Technology ModelSim ALTERA vlog 10.1b Compiler 2012.04 Apr 27 2012
+# -- Compiling module simple_ram
+# 
+# Top level modules:
+# 	simple_ram
+# vlog -vlog01compat -work work +incdir+C:/Repositories/CA-Project {C:/Repositories/CA-Project/cache_example.v}
+# Model Technology ModelSim ALTERA vlog 10.1b Compiler 2012.04 Apr 27 2012
+# -- Compiling module cache_example
+# 
+# Top level modules:
+# 	cache_example
+# vlog -vlog01compat -work work +incdir+C:/Repositories/CA-Project {C:/Repositories/CA-Project/cache.v}
+# Model Technology ModelSim ALTERA vlog 10.1b Compiler 2012.04 Apr 27 2012
+# -- Compiling module cache
+# 
+# Top level modules:
+# 	cache
+# 
+vsim -do cache_example_run_msim_rtl_verilog.do -l msim_transcript -gui work.cache_example
+# vsim -do cache_example_run_msim_rtl_verilog.do -l msim_transcript -gui work.cache_example 
+# Loading work.cache_example
+# Loading work.cache
+# Loading work.simple_ram
+# ** Warning: (vsim-3015) C:/Repositories/CA-Project/cache.v(27): [PCDPC] - Port size (5 or 5) does not match connection size (32) for port 'addr'. The port definition is at: C:/Repositories/CA-Project/simple_ram.v(3).
+# 
+#         Region: /cache_example/cache/simple_ram
+# do cache_example_run_msim_rtl_verilog.do 
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Modifying modelsim.ini
+# 
+# vlog -vlog01compat -work work +incdir+C:/Repositories/CA-Project {C:/Repositories/CA-Project/simple_ram.v}
+# Model Technology ModelSim ALTERA vlog 10.1b Compiler 2012.04 Apr 27 2012
+# -- Compiling module simple_ram
+# 
+# Top level modules:
+# 	simple_ram
+# vlog -vlog01compat -work work +incdir+C:/Repositories/CA-Project {C:/Repositories/CA-Project/cache_example.v}
+# Model Technology ModelSim ALTERA vlog 10.1b Compiler 2012.04 Apr 27 2012
+# -- Compiling module cache_example
+# 
+# Top level modules:
+# 	cache_example
+# vlog -vlog01compat -work work +incdir+C:/Repositories/CA-Project {C:/Repositories/CA-Project/cache.v}
+# Model Technology ModelSim ALTERA vlog 10.1b Compiler 2012.04 Apr 27 2012
+# -- Compiling module cache
+# 
+# Top level modules:
+# 	cache
+# 
+add wave -position insertpoint  \
+sim:/cache_example/cache/wr \
+sim:/cache_example/cache/valid_array \
+sim:/cache_example/cache/tag_array \
+sim:/cache_example/cache/tag \
+sim:/cache_example/cache/q \
+sim:/cache_example/cache/out_data \
+sim:/cache_example/cache/out \
+sim:/cache_example/cache/index_array \
+sim:/cache_example/cache/index \
+sim:/cache_example/cache/enable_reg \
+sim:/cache_example/cache/enable \
+sim:/cache_example/cache/data_array \
+sim:/cache_example/cache/data \
+sim:/cache_example/cache/clk \
+sim:/cache_example/cache/addr
+run
+run

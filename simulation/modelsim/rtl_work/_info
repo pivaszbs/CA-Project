@@ -1,0 +1,65 @@
+m255
+K3
+13
+cModel Technology
+Z0 dC:\Repositories\CA-Project\simulation\modelsim
+vcache
+!i10b 1
+!s100 ;C5HKfV`J?_hlN4=U:]n20
+ICI^:>Mj<:7nWdK]Q1A5PM2
+VS0o8hQde]Ykk^fKCl0]b;1
+Z1 dC:\Repositories\CA-Project\simulation\modelsim
+w1521753241
+8C:/Repositories/CA-Project/cache.v
+FC:/Repositories/CA-Project/cache.v
+L0 1
+Z2 OV;L;10.1b;51
+r1
+!s85 0
+31
+!s108 1521757188.659000
+!s107 C:/Repositories/CA-Project/cache.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Repositories/CA-Project|C:/Repositories/CA-Project/cache.v|
+!s101 -O0
+Z3 o-vlog01compat -work work -O0
+Z4 !s92 -vlog01compat -work work +incdir+C:/Repositories/CA-Project -O0
+vcache_example
+IZAC=DV`W<[FLB9?HGzzOK1
+V[SYFPQiCSeQ6RI]IKGQRm1
+R1
+w1521756922
+8C:/Repositories/CA-Project/cache_example.v
+FC:/Repositories/CA-Project/cache_example.v
+L0 1
+R2
+r1
+31
+R3
+R4
+!i10b 1
+!s100 EQnj2PZ3kN7NWYIGjC29>2
+!s85 0
+!s108 1521757188.440000
+!s107 C:/Repositories/CA-Project/cache_example.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Repositories/CA-Project|C:/Repositories/CA-Project/cache_example.v|
+!s101 -O0
+vsimple_ram
+I3CVFfhdiPJJb2>Vm<[T;^1
+VmAgLR04gcdzm7QiNRBV?J0
+R1
+w1521747778
+8C:/Repositories/CA-Project/simple_ram.v
+FC:/Repositories/CA-Project/simple_ram.v
+L0 1
+R2
+r1
+31
+R3
+R4
+!i10b 1
+!s100 Vg4mh]6[064O_7hJ7mCSI1
+!s85 0
+!s108 1521757188.201000
+!s107 C:/Repositories/CA-Project/simple_ram.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Repositories/CA-Project|C:/Repositories/CA-Project/simple_ram.v|
+!s101 -O0

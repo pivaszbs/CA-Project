@@ -1,13 +1,13 @@
-Analysis & Synthesis Status : Successful - Thu Mar 22 23:26:05 2018
+Analysis & Synthesis Status : Successful - Fri Mar 23 01:16:12 2018
 Quartus Prime Version : 17.1.0 Build 590 10/25/2017 SJ Lite Edition
 Revision Name : cache_example
 Top-level Entity Name : cache_example
 Family : MAX 10
-Total logic elements : 1,972
-    Total combinational functions : 808
-    Dedicated logic registers : 1,201
-Total registers : 1201
-Total pins : 71
+Total logic elements : 0
+    Total combinational functions : 0
+    Dedicated logic registers : 0
+Total registers : 0
+Total pins : 1
 Total virtual pins : 0
 Total memory bits : 0
 Embedded Multiplier 9-bit elements : 0

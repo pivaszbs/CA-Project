@@ -1,61 +1,36 @@
-module cache_example (
-	input [31:0] data,
-	input [4:0] addr,
-	input wr,
-	input clk,
-	output [31:0] q
-);
-
-	reg [31:0] data_array [3:0];
-	reg valid_array [3:0];
-	reg [2:0] tag_array [3:0];
-	reg [1:0] index_array [3:0];	
+module cache_example(output out);
 	
-	reg [2:0] tag;
-	reg [1:0] index;
-	reg [31:0] out_data;
-	reg enable_reg;	
-	wire enable;
-	wire [31:0] out;
+	reg [31:0] data;
+	reg [31:0] addr;
+	reg wr;
+	reg clk;
+	reg state;
 	
-	simple_ram simple_ram(
-			.data(data),
-			.addr(addr),
-			.wr(wr),
-			.clk(clk),
-			.enable(enable),
-			.q(out));
+	wire [31:0] q;	
 	
-	always @(posedge clk)
-	begin
-		tag = addr >> 2;
-		index = addr;		
-		enable_reg = 0;
+	cache cache(
+	.data(data),
+	.addr(addr),
+	.wr(wr),
+	.clk(clk),
+	.q(q));	
 		
-		if (wr)		
-		begin									
-			valid_array[index] <= 0;
-			enable_reg = 1;
-		end
+	initial
+	begin
+		data = 8'h01;
+		addr = 5'b00000;
+		wr = 1'b1;
+		#200
+		data = 8'h01;
+		addr = 5'b00000;
+		wr = 1'b0;				
+		#200
+		if (q == data)
+			state = 0;
 		else
-		begin
-			if (valid_array[index] && tag == tag_array[index])
-			begin
-				out_data = data_array[index];
-			end
-			else
-			begin					
-				enable_reg = 1;
-				data_array[index] = q;
-				tag_array[index] = tag;
-				valid_array[index] = 1;
-				out_data = out;
-			end
-		end
-	end	
+			state = 1;
+	end
 	
-	assign enable = enable_reg;
-	assign q = out_data;
+	always #50 clk = ~clk;	
 	
-endmodule
-
+endmodule 
