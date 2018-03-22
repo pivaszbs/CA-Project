@@ -1,5 +1,5 @@
 Flow report for cache_example
-Fri Mar 23 01:59:22 2018
+Fri Mar 23 02:47:17 2018
 Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
 
 
@@ -40,10 +40,10 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Successful - Fri Mar 23 01:59:22 2018       ;
+; Flow Status                        ; Successful - Fri Mar 23 02:47:17 2018       ;
 ; Quartus Prime Version              ; 17.1.0 Build 590 10/25/2017 SJ Lite Edition ;
 ; Revision Name                      ; cache_example                               ;
-; Top-level Entity Name              ; simple_ram_tb                               ;
+; Top-level Entity Name              ; cache_example                               ;
 ; Family                             ; MAX 10                                      ;
 ; Device                             ; 10M50DAF484C7G                              ;
 ; Timing Models                      ; Final                                       ;
@@ -66,29 +66,28 @@ refer to the applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 03/23/2018 01:58:15 ;
+; Start date & time ; 03/23/2018 02:45:47 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; cache_example       ;
 +-------------------+---------------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------+
-; Flow Non-Default Global Settings                                                                                              ;
-+-------------------------------------+----------------------------------------+---------------+---------------+----------------+
-; Assignment Name                     ; Value                                  ; Default Value ; Entity Name   ; Section Id     ;
-+-------------------------------------+----------------------------------------+---------------+---------------+----------------+
-; COMPILER_SIGNATURE_ID               ; 220295149670798.152175949400164        ; --            ; --            ; --             ;
-; EDA_OUTPUT_DATA_FORMAT              ; Verilog Hdl                            ; --            ; --            ; eda_simulation ;
-; EDA_SIMULATION_TOOL                 ; ModelSim-Altera (Verilog)              ; <None>        ; --            ; --             ;
-; EDA_TIME_SCALE                      ; 1 ps                                   ; --            ; --            ; eda_simulation ;
-; MAX_CORE_JUNCTION_TEMP              ; 85                                     ; --            ; --            ; --             ;
-; MIN_CORE_JUNCTION_TEMP              ; 0                                      ; --            ; --            ; --             ;
-; PARTITION_COLOR                     ; -- (Not supported for targeted family) ; --            ; simple_ram_tb ; Top            ;
-; PARTITION_FITTER_PRESERVATION_LEVEL ; -- (Not supported for targeted family) ; --            ; simple_ram_tb ; Top            ;
-; PARTITION_NETLIST_TYPE              ; -- (Not supported for targeted family) ; --            ; simple_ram_tb ; Top            ;
-; PROJECT_OUTPUT_DIRECTORY            ; output_files                           ; --            ; --            ; --             ;
-; TOP_LEVEL_ENTITY                    ; simple_ram_tb                          ; cache_example ; --            ; --             ;
-+-------------------------------------+----------------------------------------+---------------+---------------+----------------+
++-----------------------------------------------------------------------------------------------------------------------------+
+; Flow Non-Default Global Settings                                                                                            ;
++-------------------------------------+----------------------------------------+---------------+-------------+----------------+
+; Assignment Name                     ; Value                                  ; Default Value ; Entity Name ; Section Id     ;
++-------------------------------------+----------------------------------------+---------------+-------------+----------------+
+; COMPILER_SIGNATURE_ID               ; 220295149670798.152176234609964        ; --            ; --          ; --             ;
+; EDA_OUTPUT_DATA_FORMAT              ; Verilog Hdl                            ; --            ; --          ; eda_simulation ;
+; EDA_SIMULATION_TOOL                 ; ModelSim-Altera (Verilog)              ; <None>        ; --          ; --             ;
+; EDA_TIME_SCALE                      ; 1 ps                                   ; --            ; --          ; eda_simulation ;
+; MAX_CORE_JUNCTION_TEMP              ; 85                                     ; --            ; --          ; --             ;
+; MIN_CORE_JUNCTION_TEMP              ; 0                                      ; --            ; --          ; --             ;
+; PARTITION_COLOR                     ; -- (Not supported for targeted family) ; --            ; --          ; Top            ;
+; PARTITION_FITTER_PRESERVATION_LEVEL ; -- (Not supported for targeted family) ; --            ; --          ; Top            ;
+; PARTITION_NETLIST_TYPE              ; -- (Not supported for targeted family) ; --            ; --          ; Top            ;
+; PROJECT_OUTPUT_DIRECTORY            ; output_files                           ; --            ; --          ; --             ;
++-------------------------------------+----------------------------------------+---------------+-------------+----------------+
 
 
 +-------------------------------------------------------------------------------------------------------------------------------+
@@ -96,12 +95,12 @@ refer to the applicable agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:00:26     ; 1.0                     ; 644 MB              ; 00:00:56                           ;
-; Fitter                    ; 00:00:20     ; 1.0                     ; 1287 MB             ; 00:00:22                           ;
-; Assembler                 ; 00:00:08     ; 1.0                     ; 603 MB              ; 00:00:07                           ;
-; TimeQuest Timing Analyzer ; 00:00:04     ; 1.0                     ; 713 MB              ; 00:00:04                           ;
+; Analysis & Synthesis      ; 00:00:33     ; 1.0                     ; 656 MB              ; 00:00:49                           ;
+; Fitter                    ; 00:00:22     ; 1.0                     ; 1287 MB             ; 00:00:20                           ;
+; Assembler                 ; 00:00:11     ; 1.0                     ; 603 MB              ; 00:00:08                           ;
+; TimeQuest Timing Analyzer ; 00:00:10     ; 1.0                     ; 713 MB              ; 00:00:06                           ;
 ; EDA Netlist Writer        ; 00:00:02     ; 1.0                     ; 565 MB              ; 00:00:01                           ;
-; Total                     ; 00:01:00     ; --                      ; --                  ; 00:01:30                           ;
+; Total                     ; 00:01:18     ; --                      ; --                  ; 00:01:24                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

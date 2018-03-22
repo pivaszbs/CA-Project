@@ -29,7 +29,7 @@ module cache (
 	always @(posedge clk)
 	begin
 		tag = addr >> 2;
-		index = addr;		
+		index = addr;	
 		enable_reg = 0;
 		
 		if (wr)		
@@ -44,10 +44,11 @@ module cache (
 				out_data = data_array[index];
 			end
 			else
-			begin					
+			begin
 				enable_reg = 1;
-				data_array[index] = q;
-				tag_array[index] = tag;
+				#25
+				data_array[index] = out;
+				tag_array[index] = tag;				
 				valid_array[index] = 1;
 				out_data = out;
 			end

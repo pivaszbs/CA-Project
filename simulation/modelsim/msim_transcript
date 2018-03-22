@@ -10,22 +10,29 @@
 # ** Warning: Copied C:\altera\12.1\modelsim_ase\win32aloem/../modelsim.ini to modelsim.ini.
 #          Updated modelsim.ini.
 # 
-# vlog -vlog01compat -work work +incdir+C:/Repositories/CA-Project {C:/Repositories/CA-Project/simple_ram_tb.v}
-# Model Technology ModelSim ALTERA vlog 10.1b Compiler 2012.04 Apr 27 2012
-# -- Compiling module simple_ram_tb
-# 
-# Top level modules:
-# 	simple_ram_tb
 # vlog -vlog01compat -work work +incdir+C:/Repositories/CA-Project {C:/Repositories/CA-Project/simple_ram.v}
 # Model Technology ModelSim ALTERA vlog 10.1b Compiler 2012.04 Apr 27 2012
 # -- Compiling module simple_ram
 # 
 # Top level modules:
 # 	simple_ram
+# vlog -vlog01compat -work work +incdir+C:/Repositories/CA-Project {C:/Repositories/CA-Project/cache_example.v}
+# Model Technology ModelSim ALTERA vlog 10.1b Compiler 2012.04 Apr 27 2012
+# -- Compiling module cache_example
 # 
-vsim -do cache_example_run_msim_rtl_verilog.do -l msim_transcript -gui work.simple_ram_tb
-# vsim -do cache_example_run_msim_rtl_verilog.do -l msim_transcript -gui work.simple_ram_tb 
-# Loading work.simple_ram_tb
+# Top level modules:
+# 	cache_example
+# vlog -vlog01compat -work work +incdir+C:/Repositories/CA-Project {C:/Repositories/CA-Project/cache.v}
+# Model Technology ModelSim ALTERA vlog 10.1b Compiler 2012.04 Apr 27 2012
+# -- Compiling module cache
+# 
+# Top level modules:
+# 	cache
+# 
+vsim -do cache_example_run_msim_rtl_verilog.do -l msim_transcript -gui work.cache_example
+# vsim -do cache_example_run_msim_rtl_verilog.do -l msim_transcript -gui work.cache_example 
+# Loading work.cache_example
+# Loading work.cache
 # Loading work.simple_ram
 # do cache_example_run_msim_rtl_verilog.do 
 # if {[file exists rtl_work]} {
@@ -35,31 +42,33 @@ vsim -do cache_example_run_msim_rtl_verilog.do -l msim_transcript -gui work.simp
 # vmap work rtl_work
 # Modifying modelsim.ini
 # 
-# vlog -vlog01compat -work work +incdir+C:/Repositories/CA-Project {C:/Repositories/CA-Project/simple_ram_tb.v}
-# Model Technology ModelSim ALTERA vlog 10.1b Compiler 2012.04 Apr 27 2012
-# -- Compiling module simple_ram_tb
-# 
-# Top level modules:
-# 	simple_ram_tb
 # vlog -vlog01compat -work work +incdir+C:/Repositories/CA-Project {C:/Repositories/CA-Project/simple_ram.v}
 # Model Technology ModelSim ALTERA vlog 10.1b Compiler 2012.04 Apr 27 2012
 # -- Compiling module simple_ram
 # 
 # Top level modules:
 # 	simple_ram
+# vlog -vlog01compat -work work +incdir+C:/Repositories/CA-Project {C:/Repositories/CA-Project/cache_example.v}
+# Model Technology ModelSim ALTERA vlog 10.1b Compiler 2012.04 Apr 27 2012
+# -- Compiling module cache_example
+# 
+# Top level modules:
+# 	cache_example
+# vlog -vlog01compat -work work +incdir+C:/Repositories/CA-Project {C:/Repositories/CA-Project/cache.v}
+# Model Technology ModelSim ALTERA vlog 10.1b Compiler 2012.04 Apr 27 2012
+# -- Compiling module cache
+# 
+# Top level modules:
+# 	cache
 # 
 add wave -position insertpoint  \
-sim:/simple_ram_tb/simple_ram/wr \
-sim:/simple_ram_tb/simple_ram/ram \
-sim:/simple_ram_tb/simple_ram/q \
-sim:/simple_ram_tb/simple_ram/enable \
-sim:/simple_ram_tb/simple_ram/data \
-sim:/simple_ram_tb/simple_ram/clk \
-sim:/simple_ram_tb/simple_ram/addr_reg \
-sim:/simple_ram_tb/simple_ram/addr
-run
-run
-# Can't move the Now cursor.
+sim:/cache_example/wr \
+sim:/cache_example/state \
+sim:/cache_example/q \
+sim:/cache_example/out \
+sim:/cache_example/data \
+sim:/cache_example/clk \
+sim:/cache_example/addr
 run
 run
 run

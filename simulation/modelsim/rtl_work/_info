@@ -3,43 +3,63 @@ K3
 13
 cModel Technology
 Z0 dC:\Repositories\CA-Project\simulation\modelsim
-vsimple_ram
+vcache
 !i10b 1
-!s100 Y7LeP1QISRk=LiJDcZbmD2
-IZImio@gT6KT6me[Hlj`b50
-VBOIOE?eja?NiWY92DLg3m1
+!s100 _]baJ`C4Wbd>>2H_Y:ha13
+I5>gj_N2_^<AMHS<aFnkKW3
+VS0o8hQde]Ykk^fKCl0]b;1
 Z1 dC:\Repositories\CA-Project\simulation\modelsim
-w1521759238
-8C:/Repositories/CA-Project/simple_ram.v
-FC:/Repositories/CA-Project/simple_ram.v
+w1521762345
+8C:/Repositories/CA-Project/cache.v
+FC:/Repositories/CA-Project/cache.v
 L0 1
 Z2 OV;L;10.1b;51
 r1
 !s85 0
 31
-!s108 1521759621.171000
-!s107 C:/Repositories/CA-Project/simple_ram.v|
-!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Repositories/CA-Project|C:/Repositories/CA-Project/simple_ram.v|
+!s108 1521762592.742000
+!s107 C:/Repositories/CA-Project/cache.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Repositories/CA-Project|C:/Repositories/CA-Project/cache.v|
 !s101 -O0
 Z3 o-vlog01compat -work work -O0
 Z4 !s92 -vlog01compat -work work +incdir+C:/Repositories/CA-Project -O0
-vsimple_ram_tb
-I_o]V1WgD]V_AfegI1AABl3
-VLfoJUQjbCzLf]T=SO7b;m1
+vcache_example
+Ih4[H<ZzFoW>B]<l0mIdN:3
+V[SYFPQiCSeQ6RI]IKGQRm1
 R1
-w1521759491
-8C:/Repositories/CA-Project/simple_ram_tb.v
-FC:/Repositories/CA-Project/simple_ram_tb.v
+w1521760976
+8C:/Repositories/CA-Project/cache_example.v
+FC:/Repositories/CA-Project/cache_example.v
 L0 1
 R2
 r1
 31
 R3
-!i10b 1
-!s100 KNJd1BjV@=6YIGFe6J@GG3
-!s85 0
-!s108 1521759620.934000
-!s107 C:/Repositories/CA-Project/simple_ram_tb.v|
-!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Repositories/CA-Project|C:/Repositories/CA-Project/simple_ram_tb.v|
-!s101 -O0
 R4
+!i10b 1
+!s100 mk_K@jEZ737bIAWBc;Q7`2
+!s85 0
+!s108 1521762592.545000
+!s107 C:/Repositories/CA-Project/cache_example.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Repositories/CA-Project|C:/Repositories/CA-Project/cache_example.v|
+!s101 -O0
+vsimple_ram
+IZImio@gT6KT6me[Hlj`b50
+VBOIOE?eja?NiWY92DLg3m1
+R1
+w1521759238
+8C:/Repositories/CA-Project/simple_ram.v
+FC:/Repositories/CA-Project/simple_ram.v
+L0 1
+R2
+r1
+31
+R3
+R4
+!i10b 1
+!s100 Y7LeP1QISRk=LiJDcZbmD2
+!s85 0
+!s108 1521762592.334000
+!s107 C:/Repositories/CA-Project/simple_ram.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Repositories/CA-Project|C:/Repositories/CA-Project/simple_ram.v|
+!s101 -O0
