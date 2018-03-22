@@ -9,11 +9,14 @@ module cache_example (
 	reg [31:0] data_array [3:0];
 	reg valid_array [3:0];
 	reg [2:0] tag_array [3:0];
-	reg [1:0] index_array [3:0];
+	reg [1:0] index_array [3:0];	
 	
 	reg [2:0] tag;
 	reg [1:0] index;
+	reg [31:0] out_data;
+	reg enable_reg;	
 	wire enable;
+	wire [31:0] out;
 	
 	simple_ram simple_ram(
 			.data(data),
@@ -21,34 +24,38 @@ module cache_example (
 			.wr(wr),
 			.clk(clk),
 			.enable(enable),
-			.q(q));
+			.q(out));
 	
 	always @(posedge clk)
 	begin
 		tag = addr >> 2;
-		index = addr;
-		assign enable = 1;
+		index = addr;		
+		enable_reg = 0;
 		
 		if (wr)		
 		begin									
 			valid_array[index] <= 0;
-			assign enable = 1;
+			enable_reg = 1;
 		end
 		else
 		begin
-			if (valid_array[index] && addr == current_addr)
+			if (valid_array[index] && tag == tag_array[index])
 			begin
-				assign q = data_array[index];
+				out_data = data_array[index];
 			end
 			else
 			begin					
-				assign enable = 1;
+				enable_reg = 1;
 				data_array[index] = q;
 				tag_array[index] = tag;
-				valid_array[index] = 1;						
+				valid_array[index] = 1;
+				out_data = out;
 			end
 		end
-	end
+	end	
+	
+	assign enable = enable_reg;
+	assign q = out_data;
 	
 endmodule
 
