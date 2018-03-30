@@ -10,7 +10,7 @@ module cache_2way (
 	reg valid_array [3:0];	
 	reg [29:0] tag_array [3:0];
 	
-	reg [27:0] tag;
+	reg [29:0] tag;
 	reg [1:0] set_index;
 	reg [31:0] out_data;
 	
@@ -34,8 +34,9 @@ module cache_2way (
 		enable_reg = 0;
 		
 		if (wr)		
-		begin									
-			valid_array[set_index*2] <= 0;
+		begin
+			if (valid_array[set_index*2] && valid_array[set_index*2+1])
+				valid_array[set_index*2] <= 0;
 			enable_reg = 1;
 		end
 		else
@@ -47,6 +48,15 @@ module cache_2way (
 			else if (valid_array[set_index*2+1] && tag == tag_array[set_index*2+1])
 			begin
 				out_data = data_array[set_index*2+1];
+			end
+			else if (valid_array[set_index*2]&&!valid_array[set_index*2+1])
+			begin
+				enable_reg = 1;
+				#25
+				data_array[set_index*2+1] = out;
+				tag_array[set_index*2+1] = tag;				
+				valid_array[set_index*2+1] = 1;
+				out_data = out;
 			end
 			else
 			begin
@@ -64,4 +74,3 @@ module cache_2way (
 	assign q = out_data;
 	
 endmodule
-
