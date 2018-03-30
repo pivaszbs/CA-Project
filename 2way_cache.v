@@ -18,16 +18,32 @@
 	wire enable;
 	wire [31:0] out;
 	
+	
+	reg [31:0] data_ram;
+	reg [31:0] addr_ram;
+	reg wr_ram;
+	reg clk_ram;
+	
 	simple_ram simple_ram(
-			.data(data),
-			.addr(addr),
-			.wr(wr),
-			.clk(clk),
+			.data(data_ram),
+			.addr(addr_ram),
+			.wr(wr_ram),
+			.clk(clk_ram),
 			.enable(enable),
 			.q(out));
 	
+	initial
+	begin
+		clk_ram = 1'b1;
+	end
+	
+	always #50 clk_ram = ~clk_ram;
+	
 	always @(posedge clk)
 	begin
+		data_ram = data;
+		addr_ram = addr;
+		wr_ram = wr;
 		tag = addr << 2;
 		set_index = addr - addr % 2;
 		
@@ -52,7 +68,7 @@
 			else if (valid_array[set_index*2]&&!valid_array[set_index*2+1])
 			begin
 				enable_reg = 1;
-				#25
+				#125
 				data_array[set_index*2+1] = out;
 				tag_array[set_index*2+1] = tag;				
 				valid_array[set_index*2+1] = 1;
@@ -61,7 +77,7 @@
 			else
 			begin
 				enable_reg = 1;
-				#25
+				#125
 				data_array[set_index*2] = out;
 				tag_array[set_index*2] = tag;				
 				valid_array[set_index*2] = 1;

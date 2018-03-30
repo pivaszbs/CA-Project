@@ -18,16 +18,32 @@ module cache_4way(
 	wire enable;
 	wire [31:0] out;
 	
+	reg [31:0] data_ram;
+	reg [31:0] addr_ram;
+	reg wr_ram;
+	reg clk_ram;
+	
 	simple_ram simple_ram(
-			.data(data),
-			.addr(addr),
-			.wr(wr),
-			.clk(clk),
+			.data(data_ram),
+			.addr(addr_ram),
+			.wr(wr_ram),
+			.clk(clk_ram),
 			.enable(enable),
 			.q(out));
 	
+	initial
+	begin
+		clk_ram = 1'b1;
+	end
+	
+	always #50 clk_ram = ~clk_ram;
+	
 	always @(posedge clk)
 	begin
+		
+		data_ram = data;
+		addr_ram = addr;
+		wr_ram = wr;
 		tag = addr << 1;
 		set_index = addr >> 29 - addr % 4;
 		enable_reg = 0;
@@ -68,7 +84,7 @@ module cache_4way(
 			else if (valid_array[set_index*4]&&valid_array[set_index*4+1]&&!valid_array[set_index*4+2])
 			begin
 				enable_reg = 1;
-				#25
+				#125
 				data_array[set_index*4+2] = out;
 				tag_array[set_index*4+2] = tag;				
 				valid_array[set_index*4+2] = 1;
@@ -77,7 +93,7 @@ module cache_4way(
 			else if (valid_array[set_index*4]&&!valid_array[set_index*4+1])
 			begin
 				enable_reg = 1;
-				#25
+				#125
 				data_array[set_index*4+1] = out;
 				tag_array[set_index*4+1] = tag;				
 				valid_array[set_index*4+1] = 1;
@@ -86,7 +102,7 @@ module cache_4way(
 			else
 			begin
 				enable_reg = 1;
-				#25
+				#125
 				data_array[set_index*4] = out;
 				tag_array[set_index*4] = tag;				
 				valid_array[set_index*4] = 1;

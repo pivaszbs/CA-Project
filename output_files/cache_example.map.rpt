@@ -1,5 +1,5 @@
 Analysis & Synthesis report for cache_example
-Fri Mar 30 08:59:57 2018
+Fri Mar 30 11:58:42 2018
 Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
 
 
@@ -14,7 +14,7 @@ Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
   8. General Register Statistics
-  9. Port Connectivity Checks: "cache_4way:cache_4way"
+  9. Port Connectivity Checks: "cache_2way:cache_2way"
  10. Post-Synthesis Netlist Statistics for Top Partition
  11. Elapsed Time Per Partition
  12. Analysis & Synthesis Messages
@@ -44,7 +44,7 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Fri Mar 30 08:59:57 2018       ;
+; Analysis & Synthesis Status        ; Successful - Fri Mar 30 11:58:42 2018       ;
 ; Quartus Prime Version              ; 17.1.0 Build 590 10/25/2017 SJ Lite Edition ;
 ; Revision Name                      ; cache_example                               ;
 ; Top-level Entity Name              ; cache_example                               ;
@@ -172,7 +172,7 @@ refer to the applicable agreement for further details.
 +----------------------------------+-----------------+------------------------+-----------------------------------------------------------------------+---------+
 ; simple_ram.v                     ; yes             ; User Verilog HDL File  ; C:/Users/user/Documents/GitHub/I2P-Project/CA-Project/simple_ram.v    ;         ;
 ; cache_example.v                  ; yes             ; User Verilog HDL File  ; C:/Users/user/Documents/GitHub/I2P-Project/CA-Project/cache_example.v ;         ;
-; 4way_cache.v                     ; yes             ; User Verilog HDL File  ; C:/Users/user/Documents/GitHub/I2P-Project/CA-Project/4way_cache.v    ;         ;
+; 2way_cache.v                     ; yes             ; User Verilog HDL File  ; C:/Users/user/Documents/GitHub/I2P-Project/CA-Project/2way_cache.v    ;         ;
 +----------------------------------+-----------------+------------------------+-----------------------------------------------------------------------+---------+
 
 
@@ -233,7 +233,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 
 
 +----------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "cache_4way:cache_4way"                                                              ;
+; Port Connectivity Checks: "cache_2way:cache_2way"                                                              ;
 +------+--------+----------+-------------------------------------------------------------------------------------+
 ; Port ; Type   ; Severity ; Details                                                                             ;
 +------+--------+----------+-------------------------------------------------------------------------------------+
@@ -271,7 +271,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
-    Info: Processing started: Fri Mar 30 08:59:39 2018
+    Info: Processing started: Fri Mar 30 11:58:26 2018
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off cache_example -c cache_example
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
@@ -289,17 +289,15 @@ Info (12021): Found 1 design units, including 1 entities, in source file 4way_ca
     Info (12023): Found entity 1: cache_4way File: C:/Users/user/Documents/GitHub/I2P-Project/CA-Project/4way_cache.v Line: 1
 Info (12127): Elaborating entity "cache_example" for the top level hierarchy
 Warning (10036): Verilog HDL or VHDL warning at cache_example.v(7): object "state" assigned a value but never read File: C:/Users/user/Documents/GitHub/I2P-Project/CA-Project/cache_example.v Line: 7
-Warning (10855): Verilog HDL warning at cache_example.v(19): initial value for variable state should be constant File: C:/Users/user/Documents/GitHub/I2P-Project/CA-Project/cache_example.v Line: 19
-Warning (10755): Verilog HDL warning at cache_example.v(39): assignments to clk create a combinational loop File: C:/Users/user/Documents/GitHub/I2P-Project/CA-Project/cache_example.v Line: 39
+Warning (10755): Verilog HDL warning at cache_example.v(44): assignments to clk create a combinational loop File: C:/Users/user/Documents/GitHub/I2P-Project/CA-Project/cache_example.v Line: 44
 Warning (10034): Output port "out" at cache_example.v(1) has no driver File: C:/Users/user/Documents/GitHub/I2P-Project/CA-Project/cache_example.v Line: 1
-Info (12128): Elaborating entity "cache_4way" for hierarchy "cache_4way:cache_4way" File: C:/Users/user/Documents/GitHub/I2P-Project/CA-Project/cache_example.v Line: 16
-Warning (10230): Verilog HDL assignment warning at 4way_cache.v(31): truncated value with size 32 to match size of target (31) File: C:/Users/user/Documents/GitHub/I2P-Project/CA-Project/4way_cache.v Line: 31
-Warning (10230): Verilog HDL assignment warning at 4way_cache.v(32): truncated value with size 32 to match size of target (1) File: C:/Users/user/Documents/GitHub/I2P-Project/CA-Project/4way_cache.v Line: 32
-Warning (10230): Verilog HDL assignment warning at 4way_cache.v(64): truncated value with size 31 to match size of target (30) File: C:/Users/user/Documents/GitHub/I2P-Project/CA-Project/4way_cache.v Line: 64
-Warning (10230): Verilog HDL assignment warning at 4way_cache.v(73): truncated value with size 31 to match size of target (30) File: C:/Users/user/Documents/GitHub/I2P-Project/CA-Project/4way_cache.v Line: 73
-Warning (10230): Verilog HDL assignment warning at 4way_cache.v(82): truncated value with size 31 to match size of target (30) File: C:/Users/user/Documents/GitHub/I2P-Project/CA-Project/4way_cache.v Line: 82
-Warning (10230): Verilog HDL assignment warning at 4way_cache.v(91): truncated value with size 31 to match size of target (30) File: C:/Users/user/Documents/GitHub/I2P-Project/CA-Project/4way_cache.v Line: 91
-Info (12128): Elaborating entity "simple_ram" for hierarchy "cache_4way:cache_4way|simple_ram:simple_ram" File: C:/Users/user/Documents/GitHub/I2P-Project/CA-Project/4way_cache.v Line: 27
+Info (12128): Elaborating entity "cache_2way" for hierarchy "cache_2way:cache_2way" File: C:/Users/user/Documents/GitHub/I2P-Project/CA-Project/cache_example.v Line: 16
+Warning (10755): Verilog HDL warning at 2way_cache.v(40): assignments to clk_ram create a combinational loop File: C:/Users/user/Documents/GitHub/I2P-Project/CA-Project/2way_cache.v Line: 40
+Warning (10230): Verilog HDL assignment warning at 2way_cache.v(47): truncated value with size 32 to match size of target (30) File: C:/Users/user/Documents/GitHub/I2P-Project/CA-Project/2way_cache.v Line: 47
+Warning (10230): Verilog HDL assignment warning at 2way_cache.v(48): truncated value with size 32 to match size of target (2) File: C:/Users/user/Documents/GitHub/I2P-Project/CA-Project/2way_cache.v Line: 48
+Info (12128): Elaborating entity "simple_ram" for hierarchy "cache_2way:cache_2way|simple_ram:simple_ram" File: C:/Users/user/Documents/GitHub/I2P-Project/CA-Project/2way_cache.v Line: 33
+Warning (12011): Net is missing source, defaulting to GND
+    Warning (12110): Net "cache_2way:cache_2way|clk_ram" is missing source, defaulting to GND File: C:/Users/user/Documents/GitHub/I2P-Project/CA-Project/2way_cache.v Line: 25
 Warning (12011): Net is missing source, defaulting to GND
     Warning (12110): Net "clk" is missing source, defaulting to GND File: C:/Users/user/Documents/GitHub/I2P-Project/CA-Project/cache_example.v Line: 6
 Warning (13024): Output pins are stuck at VCC or GND
@@ -310,11 +308,11 @@ Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
 Info (21057): Implemented 1 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 0 input pins
     Info (21059): Implemented 1 output pins
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 15 warnings
-    Info: Peak virtual memory: 659 megabytes
-    Info: Processing ended: Fri Mar 30 08:59:57 2018
-    Info: Elapsed time: 00:00:18
-    Info: Total CPU time (on all processors): 00:00:37
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 13 warnings
+    Info: Peak virtual memory: 654 megabytes
+    Info: Processing ended: Fri Mar 30 11:58:42 2018
+    Info: Elapsed time: 00:00:16
+    Info: Total CPU time (on all processors): 00:00:36
 
 
 +------------------------------------------+

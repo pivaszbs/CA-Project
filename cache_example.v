@@ -8,7 +8,7 @@ module cache_example(output out);
 	
 	wire [31:0] q;
 	
-	cache cache(
+	cache_2way cache_2way(
 	.data(data),
 	.addr(addr),
 	.wr(wr),	
@@ -23,19 +23,22 @@ module cache_example(output out);
 		data = 32'b01;		
 		addr = 5'b0;
 		wr = 1'b1;
-		#100;
+		#200;
 		
 		data = 32'b11;
 		addr = 5'b1;
 		wr = 1'b1;	
-		#100;
+		#200;
 		
 		addr = 5'b1;
 		wr = 1'b0;
 		#200;
 		
 		addr = 5'b0;
-		#100;		
+		#200;
+		
+		addr = 5'b1;
+		#200;
 	end
 	
 	always #50 clk = ~clk;	
