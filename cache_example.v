@@ -8,7 +8,7 @@ module cache_example(output out);
 	
 	wire [31:0] q;
 	
-	cache_4way cache_4way(
+	cache cache(
 	.data(data),
 	.addr(addr),
 	.wr(wr),	
@@ -21,19 +21,21 @@ module cache_example(output out);
 		state = 0;		
 		
 		data = 32'b01;		
-		addr = 5'b00000;
+		addr = 5'b0;
 		wr = 1'b1;
-		#200
+		#100;
 		
-		data = 32'b01;
-		addr = 5'b00;
-		wr = 1'b0;	
-		#200
+		data = 32'b11;
+		addr = 5'b1;
+		wr = 1'b1;	
+		#100;
 		
-		if (q == data)
-			state = 0;
-		else
-			state = 1;		
+		addr = 5'b1;
+		wr = 1'b0;
+		#200;
+		
+		addr = 5'b0;
+		#100;		
 	end
 	
 	always #50 clk = ~clk;	
