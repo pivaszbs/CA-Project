@@ -1,5 +1,5 @@
 |cache_example
-out << <GND>
+out <= <GND>
 
 
 |cache_example|cache:cache
