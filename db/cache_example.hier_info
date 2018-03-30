@@ -2,7 +2,7 @@
 out <= <GND>
 
 
-|cache_example|cache:cache
+|cache_example|cache_4way:cache_4way
 data[0] => data[0].IN1
 data[1] => data[1].IN1
 data[2] => data[2].IN1
@@ -103,7 +103,7 @@ q[30] <= out_data[30].DB_MAX_OUTPUT_PORT_TYPE
 q[31] <= out_data[31].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|cache_example|cache:cache|simple_ram:simple_ram
+|cache_example|cache_4way:cache_4way|simple_ram:simple_ram
 data[0] => ram.data_a[0].DATAIN
 data[0] => ram.DATAIN
 data[1] => ram.data_a[1].DATAIN

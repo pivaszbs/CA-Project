@@ -8,7 +8,7 @@ module cache_example(output out);
 	
 	wire [31:0] q;
 	
-	cache_2way cache_2way(
+	cache_4way cache_4way(
 	.data(data),
 	.addr(addr),
 	.wr(wr),	

@@ -1,2 +1,3 @@
 Warning (10268): Verilog HDL information at cache.v(29): always construct contains both blocking and non-blocking assignments File: C:/Users/user/Documents/GitHub/I2P-Project/CA-Project/cache.v Line: 29
 Warning (10268): Verilog HDL information at 2way_cache.v(29): always construct contains both blocking and non-blocking assignments File: C:/Users/user/Documents/GitHub/I2P-Project/CA-Project/2way_cache.v Line: 29
+Warning (10268): Verilog HDL information at 4way_cache.v(29): always construct contains both blocking and non-blocking assignments File: C:/Users/user/Documents/GitHub/I2P-Project/CA-Project/4way_cache.v Line: 29

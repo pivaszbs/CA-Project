@@ -4,6 +4,7 @@ source_file = 1, C:/Users/user/Documents/GitHub/I2P-Project/CA-Project/simple_ra
 source_file = 1, C:/Users/user/Documents/GitHub/I2P-Project/CA-Project/cache_example.v
 source_file = 1, C:/Users/user/Documents/GitHub/I2P-Project/CA-Project/cache.v
 source_file = 1, C:/Users/user/Documents/GitHub/I2P-Project/CA-Project/2way_cache.v
+source_file = 1, C:/Users/user/Documents/GitHub/I2P-Project/CA-Project/4way_cache.v
 source_file = 1, C:/Users/user/Documents/GitHub/I2P-Project/CA-Project/db/cache_example.cbx.xml
 design_name = cache_example
 instance = comp, \~QUARTUS_CREATED_GND~I , ~QUARTUS_CREATED_GND~I, cache_example, 1
