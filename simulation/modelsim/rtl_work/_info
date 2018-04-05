@@ -1,76 +1,65 @@
 m255
-K4
-z2
+K3
 13
-!s112 1.1
-!i10d 8192
-!i10e 25
-!i10f 100
 cModel Technology
-Z0 dC:/Users/user/Documents/GitHub/I2P-Project/CA-Project/simulation/modelsim
-vcache_2way
-Z1 !s110 1522400359
+Z0 dC:\Repositories\CA-Project\simulation\modelsim
+vcache
 !i10b 1
-!s100 H_YNfKN4:aURY0AEMjlRL1
-I5=6T?aolRTeZP7CY0K?7l2
-Z2 VDg1SIo80bB@j0V0VzS_@n1
-R0
-w1522400282
-8C:/Users/user/Documents/GitHub/I2P-Project/CA-Project/2way_cache.v
-FC:/Users/user/Documents/GitHub/I2P-Project/CA-Project/2way_cache.v
+!s100 0dG20D>ZHWd3cK]o3_hP^2
+IIi8fGD<`SV6TGY9kn15;f0
+VCgC[fgoFSAV@cN^8N=]mo2
+Z1 dC:\Repositories\CA-Project\simulation\modelsim
+w1522965638
+8C:/Repositories/CA-Project/cache.v
+FC:/Repositories/CA-Project/cache.v
 L0 1
-Z3 OV;L;10.5b;63
+Z2 OV;L;10.1b;51
 r1
 !s85 0
 31
-Z4 !s108 1522400359.000000
-!s107 C:/Users/user/Documents/GitHub/I2P-Project/CA-Project/2way_cache.v|
-!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/user/Documents/GitHub/I2P-Project/CA-Project|C:/Users/user/Documents/GitHub/I2P-Project/CA-Project/2way_cache.v|
-!i113 1
-Z5 o-vlog01compat -work work
-Z6 !s92 -vlog01compat -work work +incdir+C:/Users/user/Documents/GitHub/I2P-Project/CA-Project
-Z7 tCvgOpt 0
+!s108 1522965729.069000
+!s107 C:/Repositories/CA-Project/cache.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Repositories/CA-Project|C:/Repositories/CA-Project/cache.v|
+!s101 -O0
+Z3 o-vlog01compat -work work -O0
+Z4 !s92 -vlog01compat -work work +incdir+C:/Repositories/CA-Project -O0
 vcache_example
+I?6Ch2L]2`a[OoLd?M>agF0
+V[SYFPQiCSeQ6RI]IKGQRm1
 R1
-!i10b 1
-!s100 cfaYekX1`>KJ?aaV4bVNg1
-IX0B2CH[NI01zAVd9dXBE:0
-R2
-R0
-w1522400247
-8C:/Users/user/Documents/GitHub/I2P-Project/CA-Project/cache_example.v
-FC:/Users/user/Documents/GitHub/I2P-Project/CA-Project/cache_example.v
+w1522964506
+8C:/Repositories/CA-Project/cache_example.v
+FC:/Repositories/CA-Project/cache_example.v
 L0 1
-R3
+R2
 r1
-!s85 0
 31
+R3
 R4
-!s107 C:/Users/user/Documents/GitHub/I2P-Project/CA-Project/cache_example.v|
-!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/user/Documents/GitHub/I2P-Project/CA-Project|C:/Users/user/Documents/GitHub/I2P-Project/CA-Project/cache_example.v|
-!i113 1
-R5
-R6
-R7
-vsimple_ram
-R1
 !i10b 1
-!s100 8T?N>_HdHzNH`c4GAA>kA0
-ISNzg@@ULb0IOL_H5Wi?SH2
-R2
-R0
-w1522395349
-8C:/Users/user/Documents/GitHub/I2P-Project/CA-Project/simple_ram.v
-FC:/Users/user/Documents/GitHub/I2P-Project/CA-Project/simple_ram.v
-L0 1
-R3
-r1
+!s100 Xc_d=BoX4]V4Eeh]F]SU21
 !s85 0
+!s108 1522965728.874000
+!s107 C:/Repositories/CA-Project/cache_example.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Repositories/CA-Project|C:/Repositories/CA-Project/cache_example.v|
+!s101 -O0
+vsimple_ram
+IB[2h6;1LK[;dcQW:oaFGX0
+VhbjKPR6A^T^^VOiYRF4;^0
+R1
+w1522965583
+8C:/Repositories/CA-Project/simple_ram.v
+FC:/Repositories/CA-Project/simple_ram.v
+L0 1
+R2
+r1
 31
-!s108 1522400358.000000
-!s107 C:/Users/user/Documents/GitHub/I2P-Project/CA-Project/simple_ram.v|
-!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/user/Documents/GitHub/I2P-Project/CA-Project|C:/Users/user/Documents/GitHub/I2P-Project/CA-Project/simple_ram.v|
-!i113 1
-R5
-R6
-R7
+R3
+R4
+!i10b 1
+!s100 1z?<Bl2=ZzaGKnK`jIEY:3
+!s85 0
+!s108 1522965728.600000
+!s107 C:/Repositories/CA-Project/simple_ram.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Repositories/CA-Project|C:/Repositories/CA-Project/simple_ram.v|
+!s101 -O0

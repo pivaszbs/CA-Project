@@ -3,8 +3,12 @@ module cache (
 	input [31:0] addr,
 	input wr,
 	input clk,
+	output state,
 	output [31:0] q
 );
+	reg [31:0] data_reg;
+	reg [31:0] addr_reg;
+	reg wr_reg;
 
 	reg [31:0] data_array [3:0];
 	reg valid_array [3:0];	
@@ -13,65 +17,72 @@ module cache (
 	
 	reg [29:0] tag;
 	reg [1:0] index;
-	reg [31:0] out_data;
-	reg enable_reg;	
-	wire enable;
-	wire [31:0] out;
+	reg [31:0] out_reg;
 	
-	reg [31:0] data_ram;
-	reg [31:0] addr_ram;
-	reg wr_ram;
-	reg clk_ram;
+	reg state_reg;
+	
+	wire [31:0] ram_out;	
+	wire ram_state;
 	
 	simple_ram simple_ram(
-			.data(data_ram),
-			.addr(addr_ram),
-			.wr(wr_ram),
-			.clk(clk_ram),
-			.enable(enable),
-			.q(out));
-	
+			.data(data),
+			.addr(addr),			
+			.wr(wr),
+			.clk(clk),			
+			.state(ram_state),
+			.q(ram_out));
+			
 	initial
 	begin
-		clk_ram = 1'b1;
+		state_reg = 1;
+		data_reg = 0;
+		addr_reg = 0;
+		wr_reg = 0;
 	end
-	
-	always #50 clk_ram = ~clk_ram;
 	
 	always @(posedge clk)
 	begin
-		data_ram = data;
-		addr_ram = addr;
-		wr_ram = wr;
-		tag = addr >> 2;
-		index = addr;	
-		enable_reg = 0;
-		
-		if (wr)		
-		begin									
-			valid_array[index] <= 0;
-			enable_reg = 1;
-		end
-		else
+		if ((data != data_reg) || (addr != addr_reg) || (wr != wr_reg))
 		begin
-			if (valid_array[index] && tag == tag_array[index])
+			state_reg = 0;
+			data_reg = data;
+			addr_reg = addr;
+			wr_reg = wr;
+		end
+			else
 			begin
-				out_data = data_array[index];
+			tag = addr >> 2;
+			index = addr;
+			
+			if (wr)
+			begin
+				valid_array[index] <= 0;
+				if (ram_state)
+					state_reg = 1;
 			end
 			else
 			begin
-				enable_reg = 1;
-				#125
-				data_array[index] = out;
-				tag_array[index] = tag;				
-				valid_array[index] = 1;
-				out_data = out;
+				if (valid_array[index] && tag == tag_array[index])
+				begin
+					out_reg = data_array[index];
+					state_reg = 1;
+				end
+				else
+				begin		
+					if (ram_state)
+					begin
+						valid_array[index] = 1;
+						data_array[index] = ram_out;
+						tag_array[index] = tag;
+						out_reg = ram_out;
+						state_reg = 1;
+					end
+				end
 			end
 		end
-	end	
-	
-	assign enable = enable_reg;
-	assign q = out_data;
+	end
+		
+	assign q = out_reg;
 	
 endmodule
 
