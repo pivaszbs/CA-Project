@@ -38,7 +38,7 @@
 
 set_global_assignment -name FAMILY "MAX 10"
 set_global_assignment -name DEVICE 10M50DAF484C7G
-set_global_assignment -name TOP_LEVEL_ENTITY cache_example
+set_global_assignment -name TOP_LEVEL_ENTITY rate_tb
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 17.1.0
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "02:32:58  MARCH 22, 2018"
 set_global_assignment -name LAST_QUARTUS_VERSION "17.1.0 Lite Edition"
@@ -60,6 +60,13 @@ set_global_assignment -name VERILOG_FILE 2way_cache.v
 set_global_assignment -name VERILOG_FILE 4way_cache.v
 set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
 set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+set_global_assignment -name VERILOG_FILE sign_extender.v
+set_global_assignment -name VERILOG_FILE testbench_sign_extender.v
+set_global_assignment -name VERILOG_FILE testbench_addr_extender.v
+set_global_assignment -name VERILOG_FILE addr_extender.v
+set_global_assignment -name VERILOG_FILE data_extender.v
+set_global_assignment -name VERILOG_FILE testbench_data_extender.v
+set_global_assignment -name VERILOG_FILE rate_tb.v
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top

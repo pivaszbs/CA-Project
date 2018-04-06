@@ -1,8 +1,8 @@
-|cache_example
+|rate_tb
 out <= <GND>
 
 
-|cache_example|cache:cache
+|rate_tb|cache:cache
 data[0] => data[0].IN1
 data[1] => data[1].IN1
 data[2] => data[2].IN1
@@ -105,7 +105,7 @@ q[30] <= out_reg[30].DB_MAX_OUTPUT_PORT_TYPE
 q[31] <= out_reg[31].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|cache_example|cache:cache|simple_ram:simple_ram
+|rate_tb|cache:cache|simple_ram:simple_ram
 data[0] => Equal0.IN31
 data[0] => ram.data_a[0].DATAIN
 data[0] => data_reg[0].DATAIN
