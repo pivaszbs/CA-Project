@@ -16,32 +16,46 @@
 # 
 # Top level modules:
 # 	simple_ram
-# vlog -vlog01compat -work work +incdir+C:/Repositories/CA-Project {C:/Repositories/CA-Project/cache_example.v}
-# Model Technology ModelSim ALTERA vlog 10.1b Compiler 2012.04 Apr 27 2012
-# -- Compiling module cache_example
-# 
-# Top level modules:
-# 	cache_example
 # vlog -vlog01compat -work work +incdir+C:/Repositories/CA-Project {C:/Repositories/CA-Project/cache.v}
 # Model Technology ModelSim ALTERA vlog 10.1b Compiler 2012.04 Apr 27 2012
 # -- Compiling module cache
 # 
 # Top level modules:
 # 	cache
+# vlog -vlog01compat -work work +incdir+C:/Repositories/CA-Project {C:/Repositories/CA-Project/rate_tb.v}
+# Model Technology ModelSim ALTERA vlog 10.1b Compiler 2012.04 Apr 27 2012
+# -- Compiling module rate_tb
 # 
-vsim -voptargs=+acc work.cache_example
-# vsim -voptargs=+acc work.cache_example 
-# Loading work.cache_example
+# Top level modules:
+# 	rate_tb
+# 
+vsim -voptargs=+acc work.rate_tb
+# vsim -voptargs=+acc work.rate_tb 
+# Loading work.rate_tb
 # Loading work.cache
 # Loading work.simple_ram
-# ** Warning: (vsim-3017) C:/Repositories/CA-Project/cache_example.v(16): [TFMPC] - Too few port connections. Expected 7, found 5.
+# ** Warning: (vsim-3017) C:/Repositories/CA-Project/rate_tb.v(20): [TFMPC] - Too few port connections. Expected 7, found 6.
 # 
-#         Region: /cache_example/cache
-# ** Warning: (vsim-3722) C:/Repositories/CA-Project/cache_example.v(16): [TFMPC] - Missing connection for port 'state'.
+#         Region: /rate_tb/cache
+# ** Warning: (vsim-3722) C:/Repositories/CA-Project/rate_tb.v(20): [TFMPC] - Missing connection for port 'state'.
 # 
-# ** Warning: (vsim-3722) C:/Repositories/CA-Project/cache_example.v(16): [TFMPC] - Missing connection for port 'is_missrate'.
-# 
-add wave -position insertpoint sim:/cache_example/cache/*
+add wave -position insertpoint sim:/rate_tb/*
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
 run
 run
 run

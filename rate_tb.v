@@ -165,7 +165,8 @@ module rate_tb(output out);
 	
 	always #50 clk = ~clk;
 	always #500
-	begin
+	begin		
+		#25
 		if (is_missrate)
 			missrate_counter = missrate_counter + 1;
 		else
