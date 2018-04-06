@@ -34,12 +34,23 @@ vsim -voptargs=+acc work.cache_example
 # Loading work.cache_example
 # Loading work.cache
 # Loading work.simple_ram
-# ** Warning: (vsim-3017) C:/Repositories/CA-Project/cache_example.v(16): [TFMPC] - Too few port connections. Expected 6, found 5.
+# ** Warning: (vsim-3017) C:/Repositories/CA-Project/cache_example.v(16): [TFMPC] - Too few port connections. Expected 7, found 5.
 # 
 #         Region: /cache_example/cache
 # ** Warning: (vsim-3722) C:/Repositories/CA-Project/cache_example.v(16): [TFMPC] - Missing connection for port 'state'.
 # 
-add wave -position insertpoint sim:/cache_example/*
+# ** Warning: (vsim-3722) C:/Repositories/CA-Project/cache_example.v(16): [TFMPC] - Missing connection for port 'is_missrate'.
+# 
+add wave -position insertpoint sim:/cache_example/cache/*
+run
+run
+run
+run
+run
+run
+run
+run
+run
 run
 run
 run

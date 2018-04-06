@@ -4,7 +4,8 @@ module cache (
 	input wr,
 	input clk,
 	output state,
-	output [31:0] q
+	output is_missrate,
+	output [31:0] q	
 );
 	reg [31:0] data_reg;
 	reg [31:0] addr_reg;
@@ -20,6 +21,8 @@ module cache (
 	reg [31:0] out_reg;
 	
 	reg state_reg;
+	
+	reg is_missrate_reg;
 	
 	wire [31:0] ram_out;	
 	wire ram_state;
@@ -57,8 +60,8 @@ module cache (
 			if (wr)
 			begin
 				valid_array[index] <= 0;
-				if (ram_state)
-					state_reg = 1;
+				if (ram_state)				
+					state_reg = 1;				
 			end
 			else
 			begin
@@ -66,16 +69,18 @@ module cache (
 				begin
 					out_reg = data_array[index];
 					state_reg = 1;
+					is_missrate_reg = 0;
 				end
 				else
 				begin		
+					is_missrate_reg = 1;
 					if (ram_state)
 					begin
 						valid_array[index] = 1;
 						data_array[index] = ram_out;
 						tag_array[index] = tag;
 						out_reg = ram_out;
-						state_reg = 1;
+						state_reg = 1;						
 					end
 				end
 			end
@@ -83,6 +88,7 @@ module cache (
 	end
 		
 	assign q = out_reg;
+	assign is_missrate = is_missrate_reg;
 	
 endmodule
 

@@ -70,6 +70,7 @@ addr[31] => addr[31].IN1
 wr => wr.IN1
 clk => clk.IN1
 state <= <GND>
+is_missrate <= is_missrate_reg.DB_MAX_OUTPUT_PORT_TYPE
 q[0] <= out_reg[0].DB_MAX_OUTPUT_PORT_TYPE
 q[1] <= out_reg[1].DB_MAX_OUTPUT_PORT_TYPE
 q[2] <= out_reg[2].DB_MAX_OUTPUT_PORT_TYPE

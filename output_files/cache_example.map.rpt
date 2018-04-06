@@ -1,5 +1,5 @@
 Analysis & Synthesis report for cache_example
-Fri Apr 06 01:01:08 2018
+Fri Apr 06 03:49:14 2018
 Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
 
 
@@ -44,7 +44,7 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Fri Apr 06 01:01:08 2018       ;
+; Analysis & Synthesis Status        ; Successful - Fri Apr 06 03:49:14 2018       ;
 ; Quartus Prime Version              ; 17.1.0 Build 590 10/25/2017 SJ Lite Edition ;
 ; Revision Name                      ; cache_example                               ;
 ; Top-level Entity Name              ; cache_example                               ;
@@ -232,14 +232,15 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "cache:cache"                                                                                              ;
-+-------+--------+----------+----------------------------------------------------------------------------------------------------------+
-; Port  ; Type   ; Severity ; Details                                                                                                  ;
-+-------+--------+----------+----------------------------------------------------------------------------------------------------------+
-; q     ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                      ;
-; state ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
-+-------+--------+----------+----------------------------------------------------------------------------------------------------------+
++--------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "cache:cache"                                                                                                    ;
++-------------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; Port        ; Type   ; Severity ; Details                                                                                                  ;
++-------------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; q           ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                      ;
+; state       ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
+; is_missrate ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
++-------------+--------+----------+----------------------------------------------------------------------------------------------------------+
 
 
 +-----------------------------------------------------+
@@ -272,7 +273,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
-    Info: Processing started: Fri Apr 06 01:00:42 2018
+    Info: Processing started: Fri Apr 06 03:48:40 2018
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off cache_example -c cache_example
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
@@ -293,11 +294,11 @@ Warning (10036): Verilog HDL or VHDL warning at cache_example.v(7): object "stat
 Warning (10755): Verilog HDL warning at cache_example.v(44): assignments to clk create a combinational loop File: C:/Repositories/CA-Project/cache_example.v Line: 44
 Warning (10034): Output port "out" at cache_example.v(1) has no driver File: C:/Repositories/CA-Project/cache_example.v Line: 1
 Info (12128): Elaborating entity "cache" for hierarchy "cache:cache" File: C:/Repositories/CA-Project/cache_example.v Line: 16
-Warning (10036): Verilog HDL or VHDL warning at cache.v(22): object "state_reg" assigned a value but never read File: C:/Repositories/CA-Project/cache.v Line: 22
-Warning (10230): Verilog HDL assignment warning at cache.v(54): truncated value with size 32 to match size of target (30) File: C:/Repositories/CA-Project/cache.v Line: 54
-Warning (10230): Verilog HDL assignment warning at cache.v(55): truncated value with size 32 to match size of target (2) File: C:/Repositories/CA-Project/cache.v Line: 55
+Warning (10036): Verilog HDL or VHDL warning at cache.v(23): object "state_reg" assigned a value but never read File: C:/Repositories/CA-Project/cache.v Line: 23
+Warning (10230): Verilog HDL assignment warning at cache.v(57): truncated value with size 32 to match size of target (30) File: C:/Repositories/CA-Project/cache.v Line: 57
+Warning (10230): Verilog HDL assignment warning at cache.v(58): truncated value with size 32 to match size of target (2) File: C:/Repositories/CA-Project/cache.v Line: 58
 Warning (10034): Output port "state" at cache.v(6) has no driver File: C:/Repositories/CA-Project/cache.v Line: 6
-Info (12128): Elaborating entity "simple_ram" for hierarchy "cache:cache|simple_ram:simple_ram" File: C:/Repositories/CA-Project/cache.v Line: 33
+Info (12128): Elaborating entity "simple_ram" for hierarchy "cache:cache|simple_ram:simple_ram" File: C:/Repositories/CA-Project/cache.v Line: 36
 Warning (12011): Net is missing source, defaulting to GND
     Warning (12110): Net "clk" is missing source, defaulting to GND File: C:/Repositories/CA-Project/cache_example.v Line: 6
 Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
@@ -310,10 +311,10 @@ Info (21057): Implemented 1 device resources after synthesis - the final resourc
     Info (21058): Implemented 0 input pins
     Info (21059): Implemented 1 output pins
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 13 warnings
-    Info: Peak virtual memory: 658 megabytes
-    Info: Processing ended: Fri Apr 06 01:01:09 2018
-    Info: Elapsed time: 00:00:27
-    Info: Total CPU time (on all processors): 00:00:52
+    Info: Peak virtual memory: 667 megabytes
+    Info: Processing ended: Fri Apr 06 03:49:15 2018
+    Info: Elapsed time: 00:00:35
+    Info: Total CPU time (on all processors): 00:01:06
 
 
 +------------------------------------------+

@@ -7,6 +7,7 @@ entity cache is
         wr              : in     vl_logic;
         clk             : in     vl_logic;
         state           : out    vl_logic;
+        is_missrate     : out    vl_logic;
         q               : out    vl_logic_vector(31 downto 0)
     );
 end cache;
