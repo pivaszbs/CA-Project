@@ -1,7 +1,7 @@
 library verilog;
 use verilog.vl_types.all;
-entity cache_example is
+entity rate_tb is
     port(
         \out\           : out    vl_logic
     );
-end cache_example;
+end rate_tb;
