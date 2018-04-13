@@ -3,6 +3,7 @@ module cache_4way(
 	input [31:0] addr,
 	input wr,
 	input clk,
+	output miss,
 	output [31:0] q
 );
 
@@ -23,6 +24,9 @@ module cache_4way(
 	reg wr_ram;
 	reg clk_ram;
 	
+	reg miss_reg;
+	reg [1:0] write_reg;
+	
 	simple_ram simple_ram(
 			.data(data_ram),
 			.addr(addr_ram),
@@ -31,8 +35,15 @@ module cache_4way(
 			.enable(enable),
 			.q(out));
 	
+	
+	
+	assign enable = enable_reg;
+	assign q = out_data;
+	assign miss = miss_reg;
+	
 	initial
 	begin
+		write_reg = 0;
 		clk_ram = 1'b1;
 	end
 	
@@ -41,78 +52,85 @@ module cache_4way(
 	always @(posedge clk)
 	begin
 		
-		data_ram = data;
-		addr_ram = addr;
-		wr_ram = wr;
-		tag = addr << 1;
-		set_index = addr >> 29 - addr % 4;
-		enable_reg = 0;
+		data_ram <= data;
+		addr_ram <= addr;
+		wr_ram <= wr;
+		tag <= addr << 1;
+		set_index <= addr >> 29 - addr % 4;
+		enable_reg <= 0;
 		
 		if (wr)		
 		begin
-			if (valid_array[set_index*2] && valid_array[set_index*2+1])
-				valid_array[set_index*2] <= 0;
-			enable_reg = 1;
+			if (valid_array[set_index*4] && valid_array[set_index*4+1] && valid_array[set_index*4+2] && valid_array[set_index*4+3])
+				valid_array[set_index*2+write_reg] <= 0;
+			enable_reg <= 1;
+			miss_reg <= 1;
+			write_reg = write_reg +1;
 		end
 		else
 		begin
 			if (valid_array[set_index*4] && tag == tag_array[set_index*4])
 			begin
-				out_data = data_array[set_index*4];
+				out_data <= data_array[set_index*4];
+				miss_reg <= 0;
 			end
 			else if (valid_array[set_index*4+1] && tag == tag_array[set_index*4+1])
 			begin
-				out_data = data_array[set_index*4+1];
+				out_data <= data_array[set_index*4+1];
+				miss_reg <= 0;
 			end
 			else if (valid_array[set_index*4+2] && tag == tag_array[set_index*4+2])
 			begin
-				out_data = data_array[set_index*4+2];
+				miss_reg <= 0;
+				out_data <= data_array[set_index*4+2];
 			end
 			else if (valid_array[set_index*4+3] && tag == tag_array[set_index*4+3])
 			begin
-				out_data = data_array[set_index*4+3];
+				miss_reg <= 0;
+				out_data <= data_array[set_index*4+3];
 			end
 			else if (valid_array[set_index*4]&&valid_array[set_index*4+1]&&valid_array[set_index*4+2]&&!valid_array[set_index*4+3])
 			begin
 				enable_reg = 1;
-				#25
-				data_array[set_index*4+3] = out;
-				tag_array[set_index*4+3] = tag;				
-				valid_array[set_index*4+3] = 1;
-				out_data = out;
+				#125
+				data_array[set_index*4+3] <= out;
+				tag_array[set_index*4+3] <= tag;				
+				valid_array[set_index*4+3] <= 1;
+				out_data <= out;
+				miss_reg <= 1;
 			end
 			else if (valid_array[set_index*4]&&valid_array[set_index*4+1]&&!valid_array[set_index*4+2])
 			begin
 				enable_reg = 1;
 				#125
-				data_array[set_index*4+2] = out;
-				tag_array[set_index*4+2] = tag;				
-				valid_array[set_index*4+2] = 1;
-				out_data = out;
+				data_array[set_index*4+2] <= out;
+				tag_array[set_index*4+2] <= tag;				
+				valid_array[set_index*4+2] <= 1;
+				out_data <= out;
+				miss_reg <= 1;
 			end
 			else if (valid_array[set_index*4]&&!valid_array[set_index*4+1])
 			begin
 				enable_reg = 1;
 				#125
-				data_array[set_index*4+1] = out;
-				tag_array[set_index*4+1] = tag;				
-				valid_array[set_index*4+1] = 1;
-				out_data = out;
+				data_array[set_index*4+1] <= out;
+				tag_array[set_index*4+1] <= tag;				
+				valid_array[set_index*4+1] <= 1;
+				out_data <= out;
+				miss_reg <= 1;
 			end
 			else
 			begin
 				enable_reg = 1;
 				#125
-				data_array[set_index*4] = out;
-				tag_array[set_index*4] = tag;				
-				valid_array[set_index*4] = 1;
-				out_data = out;
+				data_array[set_index*4] <= out;
+				tag_array[set_index*4] <= tag;				
+				valid_array[set_index*4] <= 1;
+				out_data <= out;
+				miss_reg <= 1;
 			end
 		end
 	end	
-	
-	assign enable = enable_reg;
-	assign q = out_data;
 	
 endmodule
 
