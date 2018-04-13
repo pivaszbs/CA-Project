@@ -1,0 +1,65 @@
+m255
+K3
+13
+cModel Technology
+Z0 dC:\Repositories\CA-Project\simulation\modelsim
+vcache
+Iioe_6FIMidH^@eaYF?LLl0
+VOB@DMFY^6dOJWGj0^iEWK3
+Z1 dC:\Repositories\CA-Project\simulation\modelsim
+w1523616648
+Z2 8C:/Repositories/CA-Project/cache.v
+Z3 FC:/Repositories/CA-Project/cache.v
+L0 1
+Z4 OV;L;10.1b;51
+r1
+31
+Z5 o-vlog01compat -work work -O0
+Z6 !s92 -vlog01compat -work work +incdir+C:/Repositories/CA-Project -O0
+!i10b 1
+!s100 Ym9geC1D@G4J`AzMWYPJl3
+!s85 0
+!s108 1523616739.022000
+!s107 C:/Repositories/CA-Project/cache.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Repositories/CA-Project|C:/Repositories/CA-Project/cache.v|
+!s101 -O0
+vrate_tb
+!i10b 1
+Z7 !s100 9@nbzfMXo8d1JCGK2f1A21
+Ik4na7oNPMh[Lb:?bX?j1R3
+Z8 VHA@]ed`BAI]3G=7oBIVeO3
+R1
+Z9 w1523573424
+Z10 8C:/Repositories/CA-Project/rate_tb.v
+Z11 FC:/Repositories/CA-Project/rate_tb.v
+L0 1
+R4
+r1
+!s85 0
+31
+!s108 1523616739.288000
+!s107 C:/Repositories/CA-Project/rate_tb.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Repositories/CA-Project|C:/Repositories/CA-Project/rate_tb.v|
+!s101 -O0
+R5
+R6
+vsimple_ram
+Z12 !s100 1z?<Bl2=ZzaGKnK`jIEY:3
+IB[2h6;1LK[;dcQW:oaFGX0
+Z13 VhbjKPR6A^T^^VOiYRF4;^0
+R1
+Z14 w1522965583
+Z15 8C:/Repositories/CA-Project/simple_ram.v
+Z16 FC:/Repositories/CA-Project/simple_ram.v
+L0 1
+R4
+r1
+31
+R5
+R6
+!i10b 1
+!s85 0
+!s108 1523616738.850000
+!s107 C:/Repositories/CA-Project/simple_ram.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Repositories/CA-Project|C:/Repositories/CA-Project/simple_ram.v|
+!s101 -O0

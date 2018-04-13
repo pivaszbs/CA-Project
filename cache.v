@@ -1,4 +1,5 @@
-module cache (
+module cache 
+(	
 	input [31:0] data,
 	input [31:0] addr,
 	input wr,
@@ -6,18 +7,22 @@ module cache (
 	output state,
 	output is_missrate,
 	output [31:0] q	
-);
+);	
+	
+	parameter size = 1024;
+	parameter index_size = 10;
+
 	reg [31:0] data_reg;
 	reg [31:0] addr_reg;
 	reg wr_reg;
 
-	reg [31:0] data_array [3:0];
-	reg valid_array [3:0];	
-	reg [29:0] tag_array [3:0];
-	reg [1:0] index_array [3:0];	
+	reg [31:0] data_array [size - 1:0];
+	reg valid_array [size - 1:0];	
+	reg [29:0] tag_array [size - 1:0];
+	reg [1:0] index_array [size - 1:0];	
 	
-	reg [29:0] tag;
-	reg [1:0] index;
+	reg [size - index_size - 1:0] tag;
+	reg [index_size - 1:0] index;
 	reg [31:0] out_reg;
 	
 	reg state_reg;
