@@ -1,5 +1,5 @@
 Analysis & Synthesis report for cache_example
-Fri Apr 06 04:23:34 2018
+Fri Apr 13 02:03:52 2018
 Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
 
 
@@ -44,7 +44,7 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Fri Apr 06 04:23:34 2018       ;
+; Analysis & Synthesis Status        ; Successful - Fri Apr 13 02:03:52 2018       ;
 ; Quartus Prime Version              ; 17.1.0 Build 590 10/25/2017 SJ Lite Edition ;
 ; Revision Name                      ; cache_example                               ;
 ; Top-level Entity Name              ; rate_tb                                     ;
@@ -273,7 +273,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
-    Info: Processing started: Fri Apr 06 04:23:12 2018
+    Info: Processing started: Fri Apr 13 02:03:29 2018
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off cache_example -c cache_example
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
@@ -299,9 +299,10 @@ Info (12021): Found 1 design units, including 1 entities, in source file rate_tb
     Info (12023): Found entity 1: rate_tb File: C:/Repositories/CA-Project/rate_tb.v Line: 1
 Info (12127): Elaborating entity "rate_tb" for the top level hierarchy
 Warning (10036): Verilog HDL or VHDL warning at rate_tb.v(7): object "state" assigned a value but never read File: C:/Repositories/CA-Project/rate_tb.v Line: 7
-Warning (10755): Verilog HDL warning at rate_tb.v(166): assignments to clk create a combinational loop File: C:/Repositories/CA-Project/rate_tb.v Line: 166
-Warning (10240): Verilog HDL Always Construct warning at rate_tb.v(167): inferring latch(es) for variable "missrate_counter", which holds its previous value in one or more paths through the always construct File: C:/Repositories/CA-Project/rate_tb.v Line: 167
-Warning (10240): Verilog HDL Always Construct warning at rate_tb.v(167): inferring latch(es) for variable "hitrate_counter", which holds its previous value in one or more paths through the always construct File: C:/Repositories/CA-Project/rate_tb.v Line: 167
+Warning (10755): Verilog HDL warning at rate_tb.v(10538): assignments to clk create a combinational loop File: C:/Repositories/CA-Project/rate_tb.v Line: 10538
+Warning (10240): Verilog HDL Always Construct warning at rate_tb.v(10540): inferring latch(es) for variable "init_state", which holds its previous value in one or more paths through the always construct File: C:/Repositories/CA-Project/rate_tb.v Line: 10540
+Warning (10240): Verilog HDL Always Construct warning at rate_tb.v(10540): inferring latch(es) for variable "missrate_counter", which holds its previous value in one or more paths through the always construct File: C:/Repositories/CA-Project/rate_tb.v Line: 10540
+Warning (10240): Verilog HDL Always Construct warning at rate_tb.v(10540): inferring latch(es) for variable "hitrate_counter", which holds its previous value in one or more paths through the always construct File: C:/Repositories/CA-Project/rate_tb.v Line: 10540
 Warning (10034): Output port "out" at rate_tb.v(1) has no driver File: C:/Repositories/CA-Project/rate_tb.v Line: 1
 Info (12128): Elaborating entity "cache" for hierarchy "cache:cache" File: C:/Repositories/CA-Project/rate_tb.v Line: 20
 Warning (10036): Verilog HDL or VHDL warning at cache.v(23): object "state_reg" assigned a value but never read File: C:/Repositories/CA-Project/cache.v Line: 23
@@ -320,11 +321,11 @@ Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
 Info (21057): Implemented 1 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 0 input pins
     Info (21059): Implemented 1 output pins
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 21 warnings
-    Info: Peak virtual memory: 661 megabytes
-    Info: Processing ended: Fri Apr 06 04:23:34 2018
-    Info: Elapsed time: 00:00:22
-    Info: Total CPU time (on all processors): 00:00:49
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 22 warnings
+    Info: Peak virtual memory: 665 megabytes
+    Info: Processing ended: Fri Apr 13 02:03:52 2018
+    Info: Elapsed time: 00:00:23
+    Info: Total CPU time (on all processors): 00:00:50
 
 
 +------------------------------------------+

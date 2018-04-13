@@ -3,32 +3,48 @@
 # if {[file exists rtl_work]} {
 # 	vdel -lib rtl_work -all
 # }
-# vlib rtl_work
-# vmap work rtl_work
-# Copying C:\altera\12.1\modelsim_ase\win32aloem/../modelsim.ini to modelsim.ini
-# Modifying modelsim.ini
-# ** Warning: Copied C:\altera\12.1\modelsim_ase\win32aloem/../modelsim.ini to modelsim.ini.
-#          Updated modelsim.ini.
+# ** Error: (vdel-19) Failed to access library 'rtl_work' at "rtl_work".
 # 
-# vlog -vlog01compat -work work +incdir+C:/Repositories/CA-Project {C:/Repositories/CA-Project/simple_ram.v}
+# No such file or directory. (errno = ENOENT)
+# ** Warning: (vdel-57) Library 'rtl_work' is missing or is not a valid ModelSim library.
+# 
+# ** Error: C:/altera/12.1/modelsim_ase/win32aloem/vdel failed.
+# Error in macro ./cache_example_run_msim_rtl_verilog.do line 4
+# C:/altera/12.1/modelsim_ase/win32aloem/vdel failed.
+#     while executing
+# "vdel -lib rtl_work -all"
+#     invoked from within
+# "if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }"
+vsim -voptargs=+acc work.rate_tb
+# vsim -voptargs=+acc work.rate_tb 
+# Loading work.rate_tb
+# Loading work.cache
+# Loading work.simple_ram
+# ** Warning: (vsim-3017) C:/Repositories/CA-Project/rate_tb.v(20): [TFMPC] - Too few port connections. Expected 7, found 6.
+# 
+#         Region: /rate_tb/cache
+# ** Warning: (vsim-3722) C:/Repositories/CA-Project/rate_tb.v(20): [TFMPC] - Missing connection for port 'state'.
+# 
+add wave -position insertpoint sim:/rate_tb/*
+quit -sim
+vlog -reportprogress 300 -work work C:/Repositories/CA-Project/cache.v C:/Repositories/CA-Project/rate_tb.v C:/Repositories/CA-Project/simple_ram.v
 # Model Technology ModelSim ALTERA vlog 10.1b Compiler 2012.04 Apr 27 2012
+# -- Compiling module cache
+# -- Compiling module rate_tb
 # -- Compiling module simple_ram
 # 
 # Top level modules:
-# 	simple_ram
-# vlog -vlog01compat -work work +incdir+C:/Repositories/CA-Project {C:/Repositories/CA-Project/cache.v}
+# 	rate_tb
+vlog -reportprogress 300 -work work C:/Repositories/CA-Project/cache.v C:/Repositories/CA-Project/rate_tb.v C:/Repositories/CA-Project/simple_ram.v
 # Model Technology ModelSim ALTERA vlog 10.1b Compiler 2012.04 Apr 27 2012
 # -- Compiling module cache
-# 
-# Top level modules:
-# 	cache
-# vlog -vlog01compat -work work +incdir+C:/Repositories/CA-Project {C:/Repositories/CA-Project/rate_tb.v}
-# Model Technology ModelSim ALTERA vlog 10.1b Compiler 2012.04 Apr 27 2012
 # -- Compiling module rate_tb
+# -- Compiling module simple_ram
 # 
 # Top level modules:
 # 	rate_tb
-# 
 vsim -voptargs=+acc work.rate_tb
 # vsim -voptargs=+acc work.rate_tb 
 # Loading work.rate_tb
@@ -69,3 +85,83 @@ run
 run
 run
 run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run -all
+# Break key hit 
+# Simulation stop requested.

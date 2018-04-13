@@ -58,10 +58,11 @@ module cache (
 			index = addr;
 			
 			if (wr)
-			begin
-				valid_array[index] <= 0;
+			begin		
+				data_array[index] = data;
+				tag_array[index] = tag;							
 				if (ram_state)				
-					state_reg = 1;				
+					state_reg = 1;
 			end
 			else
 			begin
@@ -80,7 +81,7 @@ module cache (
 						data_array[index] = ram_out;
 						tag_array[index] = tag;
 						out_reg = ram_out;
-						state_reg = 1;						
+						state_reg = 1;
 					end
 				end
 			end

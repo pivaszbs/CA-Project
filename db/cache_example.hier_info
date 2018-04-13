@@ -1,5 +1,5 @@
 |rate_tb
-out <= <GND>
+out << <GND>
 
 
 |rate_tb|cache:cache

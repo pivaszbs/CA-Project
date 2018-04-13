@@ -1,0 +1,62 @@
+m255
+K3
+13
+cModel Technology
+Z0 dC:\Repositories\CA-Project\simulation\modelsim
+vcache
+!i10b 1
+Z1 !s100 Rf_mOnY<md8IAjoBAUAhK3
+Z2 Ig>A8T[@<LaMbObbDoT23G1
+Z3 V6jN>M[Fe2kN3z2X9j^9ID3
+Z4 dC:\Repositories\CA-Project\simulation\modelsim
+Z5 w1523574193
+Z6 8C:/Repositories/CA-Project/cache.v
+Z7 FC:/Repositories/CA-Project/cache.v
+L0 1
+Z8 OV;L;10.1b;51
+r1
+!s85 0
+31
+Z9 !s108 1523574355.791000
+Z10 !s107 C:/Repositories/CA-Project/simple_ram.v|C:/Repositories/CA-Project/rate_tb.v|C:/Repositories/CA-Project/cache.v|
+Z11 !s90 -reportprogress|300|-work|work|C:/Repositories/CA-Project/cache.v|C:/Repositories/CA-Project/rate_tb.v|C:/Repositories/CA-Project/simple_ram.v|
+!s101 -O0
+Z12 o-work work -O0
+vrate_tb
+!i10b 1
+Z13 !s100 9@nbzfMXo8d1JCGK2f1A21
+Z14 I_M^_YbSc6>f8XLBZW?iFT1
+Z15 VHA@]ed`BAI]3G=7oBIVeO3
+R4
+Z16 w1523573424
+Z17 8C:/Repositories/CA-Project/rate_tb.v
+Z18 FC:/Repositories/CA-Project/rate_tb.v
+L0 1
+R8
+r1
+!s85 0
+31
+R9
+R10
+R11
+!s101 -O0
+R12
+vsimple_ram
+!i10b 1
+Z19 !s100 1z?<Bl2=ZzaGKnK`jIEY:3
+Z20 IDVFc4S<5k49YYO;jLkjIH1
+Z21 VhbjKPR6A^T^^VOiYRF4;^0
+R4
+Z22 w1522965583
+Z23 8C:/Repositories/CA-Project/simple_ram.v
+Z24 FC:/Repositories/CA-Project/simple_ram.v
+L0 1
+R8
+r1
+!s85 0
+31
+R9
+R10
+R11
+!s101 -O0
+R12
