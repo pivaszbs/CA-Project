@@ -1,5 +1,5 @@
 Analysis & Synthesis report for cache_example
-Fri Apr 13 13:51:18 2018
+Tue Apr 17 23:45:29 2018
 Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
 
 
@@ -15,11 +15,12 @@ Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
   7. Analysis & Synthesis Resource Utilization by Entity
   8. General Register Statistics
   9. Parameter Settings for User Entity Instance: cache:cache
- 10. Port Connectivity Checks: "cache:cache"
- 11. Post-Synthesis Netlist Statistics for Top Partition
- 12. Elapsed Time Per Partition
- 13. Analysis & Synthesis Messages
- 14. Analysis & Synthesis Suppressed Messages
+ 10. Port Connectivity Checks: "cache:cache|ram:ram"
+ 11. Port Connectivity Checks: "cache:cache"
+ 12. Post-Synthesis Netlist Statistics for Top Partition
+ 13. Elapsed Time Per Partition
+ 14. Analysis & Synthesis Messages
+ 15. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -45,7 +46,7 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Fri Apr 13 13:51:17 2018       ;
+; Analysis & Synthesis Status        ; Successful - Tue Apr 17 23:45:29 2018       ;
 ; Quartus Prime Version              ; 17.1.0 Build 590 10/25/2017 SJ Lite Edition ;
 ; Revision Name                      ; cache_example                               ;
 ; Top-level Entity Name              ; rate_tb                                     ;
@@ -166,46 +167,46 @@ refer to the applicable agreement for further details.
 +----------------------------+-------------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                          ;
-+----------------------------------+-----------------+------------------------+-----------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path            ; Library ;
-+----------------------------------+-----------------+------------------------+-----------------------------------------+---------+
-; simple_ram.v                     ; yes             ; User Verilog HDL File  ; C:/Repositories/CA-Project/simple_ram.v ;         ;
-; cache.v                          ; yes             ; User Verilog HDL File  ; C:/Repositories/CA-Project/cache.v      ;         ;
-; rate_tb.v                        ; yes             ; User Verilog HDL File  ; C:/Repositories/CA-Project/rate_tb.v    ;         ;
-+----------------------------------+-----------------+------------------------+-----------------------------------------+---------+
++------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                       ;
++----------------------------------+-----------------+------------------------+--------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path         ; Library ;
++----------------------------------+-----------------+------------------------+--------------------------------------+---------+
+; cache.v                          ; yes             ; User Verilog HDL File  ; C:/Repositories/CA-Project/cache.v   ;         ;
+; rate_tb.v                        ; yes             ; User Verilog HDL File  ; C:/Repositories/CA-Project/rate_tb.v ;         ;
+; ram.v                            ; yes             ; User Verilog HDL File  ; C:/Repositories/CA-Project/ram.v     ;         ;
++----------------------------------+-----------------+------------------------+--------------------------------------+---------+
 
 
-+----------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary              ;
-+---------------------------------------------+------------+
-; Resource                                    ; Usage      ;
-+---------------------------------------------+------------+
-;                                             ;            ;
-; Total combinational functions               ; 0          ;
-; Logic element usage by number of LUT inputs ;            ;
-;     -- 4 input functions                    ; 0          ;
-;     -- 3 input functions                    ; 0          ;
-;     -- <=2 input functions                  ; 0          ;
-;                                             ;            ;
-; Logic elements by mode                      ;            ;
-;     -- normal mode                          ; 0          ;
-;     -- arithmetic mode                      ; 0          ;
-;                                             ;            ;
-; Total registers                             ; 0          ;
-;     -- Dedicated logic registers            ; 0          ;
-;     -- I/O registers                        ; 0          ;
-;                                             ;            ;
-; I/O pins                                    ; 1          ;
-;                                             ;            ;
-; Embedded Multiplier 9-bit elements          ; 0          ;
-;                                             ;            ;
-; Maximum fan-out node                        ; out~output ;
-; Maximum fan-out                             ; 1          ;
-; Total fan-out                               ; 1          ;
-; Average fan-out                             ; 0.50       ;
-+---------------------------------------------+------------+
++--------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary            ;
++---------------------------------------------+----------+
+; Resource                                    ; Usage    ;
++---------------------------------------------+----------+
+;                                             ;          ;
+; Total combinational functions               ; 0        ;
+; Logic element usage by number of LUT inputs ;          ;
+;     -- 4 input functions                    ; 0        ;
+;     -- 3 input functions                    ; 0        ;
+;     -- <=2 input functions                  ; 0        ;
+;                                             ;          ;
+; Logic elements by mode                      ;          ;
+;     -- normal mode                          ; 0        ;
+;     -- arithmetic mode                      ; 0        ;
+;                                             ;          ;
+; Total registers                             ; 0        ;
+;     -- Dedicated logic registers            ; 0        ;
+;     -- I/O registers                        ; 0        ;
+;                                             ;          ;
+; I/O pins                                    ; 1        ;
+;                                             ;          ;
+; Embedded Multiplier 9-bit elements          ; 0        ;
+;                                             ;          ;
+; Maximum fan-out node                        ; a~output ;
+; Maximum fan-out                             ; 1        ;
+; Total fan-out                               ; 1        ;
+; Average fan-out                             ; 0.50     ;
++---------------------------------------------+----------+
 
 
 +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -244,14 +245,23 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "cache:cache|ram:ram"                                                                ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; out  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
 +--------------------------------------------------------------------------------------------------------------------------------------------+
 ; Port Connectivity Checks: "cache:cache"                                                                                                    ;
 +-------------+--------+----------+----------------------------------------------------------------------------------------------------------+
 ; Port        ; Type   ; Severity ; Details                                                                                                  ;
 +-------------+--------+----------+----------------------------------------------------------------------------------------------------------+
 ; is_missrate ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                      ;
-; q           ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                      ;
-; state       ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
+; out         ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                      ;
+; response    ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
 +-------------+--------+----------+----------------------------------------------------------------------------------------------------------+
 
 
@@ -285,14 +295,10 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
-    Info: Processing started: Fri Apr 13 13:50:52 2018
+    Info: Processing started: Tue Apr 17 23:45:04 2018
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off cache_example -c cache_example
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
-Info (12021): Found 1 design units, including 1 entities, in source file simple_ram_tb.v
-    Info (12023): Found entity 1: simple_ram_tb File: C:/Repositories/CA-Project/simple_ram_tb.v Line: 1
-Info (12021): Found 1 design units, including 1 entities, in source file simple_ram.v
-    Info (12023): Found entity 1: simple_ram File: C:/Repositories/CA-Project/simple_ram.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file cache_example.v
     Info (12023): Found entity 1: cache_example File: C:/Repositories/CA-Project/cache_example.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file cache.v
@@ -301,44 +307,47 @@ Info (12021): Found 1 design units, including 1 entities, in source file 2way_ca
     Info (12023): Found entity 1: cache_2way File: C:/Repositories/CA-Project/2way_cache.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file 4way_cache.v
     Info (12023): Found entity 1: cache_4way File: C:/Repositories/CA-Project/4way_cache.v Line: 1
-Warning (12019): Can't analyze file -- file sign_extender.v is missing
-Warning (12019): Can't analyze file -- file testbench_sign_extender.v is missing
-Warning (12019): Can't analyze file -- file testbench_addr_extender.v is missing
-Warning (12019): Can't analyze file -- file addr_extender.v is missing
-Warning (12019): Can't analyze file -- file data_extender.v is missing
-Warning (12019): Can't analyze file -- file testbench_data_extender.v is missing
 Info (12021): Found 1 design units, including 1 entities, in source file rate_tb.v
     Info (12023): Found entity 1: rate_tb File: C:/Repositories/CA-Project/rate_tb.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file ram.v
+    Info (12023): Found entity 1: ram File: C:/Repositories/CA-Project/ram.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file ram_test_bench.v
+    Info (12023): Found entity 1: ram_test_bench File: C:/Repositories/CA-Project/ram_test_bench.v Line: 1
+Warning (10236): Verilog HDL Implicit Net warning at cache.v(96): created implicit net for "q" File: C:/Repositories/CA-Project/cache.v Line: 96
 Info (12127): Elaborating entity "rate_tb" for the top level hierarchy
 Warning (10036): Verilog HDL or VHDL warning at rate_tb.v(7): object "state" assigned a value but never read File: C:/Repositories/CA-Project/rate_tb.v Line: 7
-Warning (10755): Verilog HDL warning at rate_tb.v(10538): assignments to clk create a combinational loop File: C:/Repositories/CA-Project/rate_tb.v Line: 10538
-Warning (10240): Verilog HDL Always Construct warning at rate_tb.v(10540): inferring latch(es) for variable "init_state", which holds its previous value in one or more paths through the always construct File: C:/Repositories/CA-Project/rate_tb.v Line: 10540
-Warning (10240): Verilog HDL Always Construct warning at rate_tb.v(10540): inferring latch(es) for variable "missrate_counter", which holds its previous value in one or more paths through the always construct File: C:/Repositories/CA-Project/rate_tb.v Line: 10540
-Warning (10240): Verilog HDL Always Construct warning at rate_tb.v(10540): inferring latch(es) for variable "hitrate_counter", which holds its previous value in one or more paths through the always construct File: C:/Repositories/CA-Project/rate_tb.v Line: 10540
-Warning (10034): Output port "out" at rate_tb.v(1) has no driver File: C:/Repositories/CA-Project/rate_tb.v Line: 1
+Warning (10175): Verilog HDL warning at rate_tb.v(10536): ignoring unsupported system task File: C:/Repositories/CA-Project/rate_tb.v Line: 10536
+Warning (10755): Verilog HDL warning at rate_tb.v(10539): assignments to clk create a combinational loop File: C:/Repositories/CA-Project/rate_tb.v Line: 10539
+Warning (10240): Verilog HDL Always Construct warning at rate_tb.v(10541): inferring latch(es) for variable "init_state", which holds its previous value in one or more paths through the always construct File: C:/Repositories/CA-Project/rate_tb.v Line: 10541
+Warning (10240): Verilog HDL Always Construct warning at rate_tb.v(10541): inferring latch(es) for variable "missrate_counter", which holds its previous value in one or more paths through the always construct File: C:/Repositories/CA-Project/rate_tb.v Line: 10541
+Warning (10240): Verilog HDL Always Construct warning at rate_tb.v(10541): inferring latch(es) for variable "hitrate_counter", which holds its previous value in one or more paths through the always construct File: C:/Repositories/CA-Project/rate_tb.v Line: 10541
+Warning (10034): Output port "a" at rate_tb.v(1) has no driver File: C:/Repositories/CA-Project/rate_tb.v Line: 1
 Info (12128): Elaborating entity "cache" for hierarchy "cache:cache" File: C:/Repositories/CA-Project/rate_tb.v Line: 20
+Warning (10036): Verilog HDL or VHDL warning at cache.v(96): object "q" assigned a value but never read File: C:/Repositories/CA-Project/cache.v Line: 96
 Warning (10036): Verilog HDL or VHDL warning at cache.v(28): object "state_reg" assigned a value but never read File: C:/Repositories/CA-Project/cache.v Line: 28
 Warning (10230): Verilog HDL assignment warning at cache.v(63): truncated value with size 32 to match size of target (10) File: C:/Repositories/CA-Project/cache.v Line: 63
 Warning (10230): Verilog HDL assignment warning at cache.v(68): truncated value with size 1014 to match size of target (30) File: C:/Repositories/CA-Project/cache.v Line: 68
 Warning (10230): Verilog HDL assignment warning at cache.v(87): truncated value with size 1014 to match size of target (30) File: C:/Repositories/CA-Project/cache.v Line: 87
-Warning (10034): Output port "state" at cache.v(7) has no driver File: C:/Repositories/CA-Project/cache.v Line: 7
-Info (12128): Elaborating entity "simple_ram" for hierarchy "cache:cache|simple_ram:simple_ram" File: C:/Repositories/CA-Project/cache.v Line: 41
+Warning (10230): Verilog HDL assignment warning at cache.v(96): truncated value with size 32 to match size of target (1) File: C:/Repositories/CA-Project/cache.v Line: 96
+Warning (10034): Output port "out" at cache.v(10) has no driver File: C:/Repositories/CA-Project/cache.v Line: 10
+Warning (10034): Output port "response" at cache.v(7) has no driver File: C:/Repositories/CA-Project/cache.v Line: 7
+Info (12128): Elaborating entity "ram" for hierarchy "cache:cache|ram:ram" File: C:/Repositories/CA-Project/cache.v Line: 41
 Warning (12011): Net is missing source, defaulting to GND
     Warning (12110): Net "clk" is missing source, defaulting to GND File: C:/Repositories/CA-Project/rate_tb.v Line: 6
 Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "out" is stuck at GND File: C:/Repositories/CA-Project/rate_tb.v Line: 1
+    Warning (13410): Pin "a" is stuck at GND File: C:/Repositories/CA-Project/rate_tb.v Line: 1
 Info (144001): Generated suppressed messages file C:/Repositories/CA-Project/output_files/cache_example.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
 Info (21057): Implemented 1 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 0 input pins
     Info (21059): Implemented 1 output pins
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 23 warnings
-    Info: Peak virtual memory: 665 megabytes
-    Info: Processing ended: Fri Apr 13 13:51:18 2018
-    Info: Elapsed time: 00:00:26
-    Info: Total CPU time (on all processors): 00:00:55
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 22 warnings
+    Info: Peak virtual memory: 664 megabytes
+    Info: Processing ended: Tue Apr 17 23:45:29 2018
+    Info: Elapsed time: 00:00:25
+    Info: Total CPU time (on all processors): 00:00:54
 
 
 +------------------------------------------+

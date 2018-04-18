@@ -10,9 +10,9 @@ entity cache is
         addr            : in     vl_logic_vector(31 downto 0);
         wr              : in     vl_logic;
         clk             : in     vl_logic;
-        state           : out    vl_logic;
+        response        : out    vl_logic;
         is_missrate     : out    vl_logic;
-        q               : out    vl_logic_vector(31 downto 0)
+        \out\           : out    vl_logic_vector(31 downto 0)
     );
     attribute mti_svvh_generic_type : integer;
     attribute mti_svvh_generic_type of size : constant is 1;

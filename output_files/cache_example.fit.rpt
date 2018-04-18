@@ -1,5 +1,5 @@
 Fitter report for cache_example
-Fri Apr 13 13:51:36 2018
+Tue Apr 17 23:45:43 2018
 Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
 
 
@@ -59,7 +59,7 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Fitter Summary                                                                   ;
 +------------------------------------+---------------------------------------------+
-; Fitter Status                      ; Successful - Fri Apr 13 13:51:35 2018       ;
+; Fitter Status                      ; Successful - Tue Apr 17 23:45:43 2018       ;
 ; Quartus Prime Version              ; 17.1.0 Build 590 10/25/2017 SJ Lite Edition ;
 ; Revision Name                      ; cache_example                               ;
 ; Top-level Entity Name              ; rate_tb                                     ;
@@ -326,7 +326,7 @@ The pin-out file can be found in C:/Repositories/CA-Project/output_files/cache_e
 +------+-------+----------+--------------+--------------+--------------+-----------------+------------------------+---------------+-----------+-----------------+------------+---------------+----------+--------------+--------------+------------------+-----------------------------------+---------------------------+----------------------------+-----------------------------+----------------------+----------------------+---------------------+
 ; Name ; Pin # ; I/O Bank ; X coordinate ; Y coordinate ; Z coordinate ; Output Register ; Output Enable Register ; Power Up High ; Slew Rate ; PCI I/O Enabled ; Open Drain ; TRI Primitive ; Bus Hold ; Weak Pull Up ; I/O Standard ; Current Strength ; Termination                       ; Termination Control Block ; Output Buffer Pre-emphasis ; Voltage Output Differential ; Location assigned by ; Output Enable Source ; Output Enable Group ;
 +------+-------+----------+--------------+--------------+--------------+-----------------+------------------------+---------------+-----------+-----------------+------------+---------------+----------+--------------+--------------+------------------+-----------------------------------+---------------------------+----------------------------+-----------------------------+----------------------+----------------------+---------------------+
-; out  ; AB20  ; 4        ; 56           ; 0            ; 0            ; no              ; no                     ; no            ; 2         ; no              ; no         ; no            ; no       ; Off          ; 2.5 V        ; Default          ; Series 50 Ohm without Calibration ; --                        ; no                         ; no                          ; Fitter               ; -                    ; -                   ;
+; a    ; AB20  ; 4        ; 56           ; 0            ; 0            ; no              ; no                     ; no            ; 2         ; no              ; no         ; no            ; no       ; Off          ; 2.5 V        ; Default          ; Series 50 Ohm without Calibration ; --                        ; no                         ; no                          ; Fitter               ; -                    ; -                   ;
 +------+-------+----------+--------------+--------------+--------------+-----------------+------------------------+---------------+-----------+-----------------+------------+---------------+----------+--------------+--------------+------------------+-----------------------------------+---------------------------+----------------------------+-----------------------------+----------------------+----------------------+---------------------+
 
 
@@ -431,7 +431,7 @@ The pin-out file can be found in C:/Repositories/CA-Project/output_files/cache_e
 ; AB17     ; 241        ; 4        ; RESERVED_INPUT_WITH_WEAK_PULLUP                ;        ;                       ;         ; Column I/O ;                 ; no       ; On           ;
 ; AB18     ; 243        ; 4        ; RESERVED_INPUT_WITH_WEAK_PULLUP                ;        ;                       ;         ; Column I/O ;                 ; no       ; On           ;
 ; AB19     ; 213        ; 4        ; RESERVED_INPUT_WITH_WEAK_PULLUP                ;        ;                       ;         ; Column I/O ;                 ; no       ; On           ;
-; AB20     ; 215        ; 4        ; out                                            ; output ; 2.5 V                 ;         ; Column I/O ; N               ; no       ; Off          ;
+; AB20     ; 215        ; 4        ; a                                              ; output ; 2.5 V                 ;         ; Column I/O ; N               ; no       ; Off          ;
 ; AB21     ; 225        ; 4        ; RESERVED_INPUT_WITH_WEAK_PULLUP                ;        ;                       ;         ; Column I/O ;                 ; no       ; On           ;
 ; AB22     ;            ;          ; GND                                            ; gnd    ;                       ;         ; --         ;                 ; --       ; --           ;
 ; B1       ; 495        ; 8        ; RESERVED_INPUT_WITH_WEAK_PULLUP                ;        ;                       ;         ; Column I/O ;                 ; no       ; On           ;
@@ -861,8 +861,8 @@ Note: Pin directions (input, output or bidir) are based on device operating in u
 +----------+-------------------------------+
 ; Pin Name ; Reason                        ;
 +----------+-------------------------------+
-; out      ; Incomplete set of assignments ;
-; out      ; Missing location assignment   ;
+; a        ; Incomplete set of assignments ;
+; a        ; Missing location assignment   ;
 +----------+-------------------------------+
 
 
@@ -881,7 +881,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +------+----------+---------------+---------------+-----------------------+-----+------+
 ; Name ; Pin Type ; Pad to Core 0 ; Pad to Core 1 ; Pad to Input Register ; TCO ; TCOE ;
 +------+----------+---------------+---------------+-----------------------+-----+------+
-; out  ; Output   ; --            ; --            ; --                    ; --  ; --   ;
+; a    ; Output   ; --            ; --            ; --                    ; --  ; --   ;
 +------+----------+---------------+---------------+-----------------------+-----+------+
 
 
@@ -1007,7 +1007,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; Total Unchecked    ; 0            ; 0            ; 0            ; 0            ; 0            ; 0         ; 0            ; 0            ; 0         ; 0         ; 0            ; 0         ; 0            ; 0            ; 0            ; 0            ; 0         ; 0            ; 0            ; 0            ; 0            ; 0         ; 0            ; 0            ; 0            ; 0            ; 0            ; 0         ; 0            ; 0            ;
 ; Total Inapplicable ; 1            ; 1            ; 1            ; 1            ; 1            ; 0         ; 1            ; 1            ; 0         ; 0         ; 1            ; 0         ; 1            ; 1            ; 1            ; 1            ; 0         ; 1            ; 1            ; 1            ; 1            ; 0         ; 1            ; 1            ; 1            ; 1            ; 1            ; 0         ; 1            ; 1            ;
 ; Total Fail         ; 0            ; 0            ; 0            ; 0            ; 0            ; 0         ; 0            ; 0            ; 0         ; 0         ; 0            ; 0         ; 0            ; 0            ; 0            ; 0            ; 0         ; 0            ; 0            ; 0            ; 0            ; 0         ; 0            ; 0            ; 0            ; 0            ; 0            ; 0         ; 0            ; 0            ;
-; out                ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ;
+; a                  ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ;
 +--------------------+--------------+--------------+--------------+--------------+--------------+-----------+--------------+--------------+-----------+-----------+--------------+-----------+--------------+--------------+--------------+--------------+-----------+--------------+--------------+--------------+--------------+-----------+--------------+--------------+--------------+--------------+--------------+-----------+--------------+--------------+
 
 
@@ -1130,10 +1130,10 @@ Info (334004): Delay annotation completed successfully
 Info (11218): Fitter post-fit operations ending: elapsed time is 00:00:02
 Info (144001): Generated suppressed messages file C:/Repositories/CA-Project/output_files/cache_example.fit.smsg
 Info: Quartus Prime Fitter was successful. 0 errors, 6 warnings
-    Info: Peak virtual memory: 1284 megabytes
-    Info: Processing ended: Fri Apr 13 13:51:36 2018
-    Info: Elapsed time: 00:00:17
-    Info: Total CPU time (on all processors): 00:00:17
+    Info: Peak virtual memory: 1286 megabytes
+    Info: Processing ended: Tue Apr 17 23:45:44 2018
+    Info: Elapsed time: 00:00:14
+    Info: Total CPU time (on all processors): 00:00:16
 
 
 +----------------------------+

@@ -16,7 +16,7 @@
 // PROGRAM "Quartus Prime"
 // VERSION "Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition"
 
-// DATE "04/13/2018 13:51:56"
+// DATE "04/17/2018 23:46:00"
 
 // 
 // Device: Altera 10M50DAF484C7G Package FBGA484
@@ -29,11 +29,11 @@
 `timescale 1 ps/ 1 ps
 
 module rate_tb (
-	out);
-output 	out;
+	a);
+output 	a;
 
 // Design Ports Information
-// out	=>  Location: PIN_AB20,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// a	=>  Location: PIN_AB20,	 I/O Standard: 2.5 V,	 Current Strength: Default
 
 
 wire gnd;
@@ -51,7 +51,7 @@ wire \~QUARTUS_CREATED_GND~I_combout ;
 wire \~QUARTUS_CREATED_UNVM~~busy ;
 wire \~QUARTUS_CREATED_ADC1~~eoc ;
 wire \~QUARTUS_CREATED_ADC2~~eoc ;
-wire \out~output_o ;
+wire \a~output_o ;
 
 
 hard_block auto_generated_inst(
@@ -77,16 +77,16 @@ defparam \~QUARTUS_CREATED_GND~I .sum_lutc_input = "datac";
 // synopsys translate_on
 
 // Location: IOOBUF_X56_Y0_N2
-fiftyfivenm_io_obuf \out~output (
+fiftyfivenm_io_obuf \a~output (
 	.i(gnd),
 	.oe(vcc),
 	.seriesterminationcontrol(16'b0000000000000000),
 	.devoe(devoe),
-	.o(\out~output_o ),
+	.o(\a~output_o ),
 	.obar());
 // synopsys translate_off
-defparam \out~output .bus_hold = "false";
-defparam \out~output .open_drain_output = "false";
+defparam \a~output .bus_hold = "false";
+defparam \a~output .open_drain_output = "false";
 // synopsys translate_on
 
 // Location: UNVM_X0_Y40_N40
@@ -170,7 +170,7 @@ defparam \~QUARTUS_CREATED_ADC2~ .tsclkdiv = 1;
 defparam \~QUARTUS_CREATED_ADC2~ .tsclksel = 0;
 // synopsys translate_on
 
-assign out = \out~output_o ;
+assign a = \a~output_o ;
 
 endmodule
 

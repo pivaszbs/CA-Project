@@ -5,7 +5,7 @@ if {[file exists rtl_work]} {
 vlib rtl_work
 vmap work rtl_work
 
-vlog -vlog01compat -work work +incdir+C:/Repositories/CA-Project {C:/Repositories/CA-Project/simple_ram.v}
 vlog -vlog01compat -work work +incdir+C:/Repositories/CA-Project {C:/Repositories/CA-Project/cache.v}
 vlog -vlog01compat -work work +incdir+C:/Repositories/CA-Project {C:/Repositories/CA-Project/rate_tb.v}
+vlog -vlog01compat -work work +incdir+C:/Repositories/CA-Project {C:/Repositories/CA-Project/ram.v}
 

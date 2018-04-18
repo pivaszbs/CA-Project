@@ -4,9 +4,9 @@ module cache
 	input [31:0] addr,
 	input wr,
 	input clk,
-	output state,
+	output response,
 	output is_missrate,
-	output [31:0] q	
+	output [31:0] out	
 );	
 	
 	parameter size = 1024;
@@ -30,15 +30,15 @@ module cache
 	reg is_missrate_reg;
 	
 	wire [31:0] ram_out;	
-	wire ram_state;
+	wire ram_response;
 	
-	simple_ram simple_ram(
-			.data(data),
-			.addr(addr),			
-			.wr(wr),
-			.clk(clk),			
-			.state(ram_state),
-			.q(ram_out));
+	ram ram(
+		.data(data),
+		.addr(addr),			
+		.wr(wr),
+		.clk(clk),			
+		.response(ram_response),
+		.out(ram_out));
 			
 	initial
 	begin
@@ -66,7 +66,7 @@ module cache
 			begin		
 				data_array[index] = data;
 				tag_array[index] = tag;							
-				if (ram_state)				
+				if (ram_response)				
 					state_reg = 1;
 			end
 			else
@@ -80,7 +80,7 @@ module cache
 				else
 				begin		
 					is_missrate_reg = 1;
-					if (ram_state)
+					if (ram_response)
 					begin
 						valid_array[index] = 1;
 						data_array[index] = ram_out;

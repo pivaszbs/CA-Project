@@ -1,4 +1,4 @@
-module rate_tb(output out);
+module rate_tb(output a);
 	
 	reg [31:0] data;
 	reg [31:0] addr;
@@ -9,7 +9,7 @@ module rate_tb(output out);
 	reg[31:0] missrate_counter;
 	reg[31:0] hitrate_counter;
 	
-	wire [31:0] q;
+	wire [31:0] out;
 	
 	cache cache(
 	.data(data),
@@ -17,7 +17,7 @@ module rate_tb(output out);
 	.wr(wr),	
 	.clk(clk),
 	.is_missrate(is_missrate),
-	.q(q));
+	.out(out));
 	
 	reg init_state;
 		
@@ -10533,6 +10533,7 @@ data = 32'b00000000000000000000100000110101;
 addr = 32'b00000000000000001010011010010101;
 wr = 1'b1;
 #500;
+	$finish;	
 	end
 	
 	always #50 clk = ~clk;			
