@@ -1,5 +1,5 @@
 module ram (
-	//data which should be written
+	//data to be written
 	input [31:0] data,
 	
 	//memory address

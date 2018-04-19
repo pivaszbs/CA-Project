@@ -45,3 +45,4 @@ run -all
 #    Time: 2101 ns  Iteration: 0  Instance: /rate_tb
 # 1
 # Break in Module rate_tb at C:/Repositories/CA-Project/rate_tb.v line 10536
+quit -sim
