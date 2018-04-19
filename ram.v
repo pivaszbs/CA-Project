@@ -51,14 +51,16 @@ module ram (
 			addr_reg = addr;
 			wr_reg = wr;
 		end
-			
-		if (wr)
-			ram[addr] = data;
 		else
-			addr_reg = addr;
-		#200;
-		response_reg = 1;
-	end
+		begin
+			if (wr)
+				ram[addr] = data;
+			else
+				addr_reg = addr;		
+			
+			response_reg = 1;
+		end
+	end	
 	
 	assign out = ram[addr_reg];
 	assign response = response_reg;

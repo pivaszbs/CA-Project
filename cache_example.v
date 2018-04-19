@@ -1,44 +1,41 @@
-module cache_example(output out);
+module cache_example(output a);
 	
 	reg [31:0] data;
 	reg [31:0] addr;
 	reg wr;
 	reg clk;
-	reg state;
 	
-	wire [31:0] q;
+	wire is_missrate;
+	wire [31:0] out;
 	
 	cache cache(
 	.data(data),
 	.addr(addr),
 	.wr(wr),	
 	.clk(clk),
-	.q(q));
+	.is_missrate(is_missrate),
+	.out(out));
 		
 	initial
 	begin
 		clk = 1;		
-		state = 0;		
 		
 		data = 32'b01;		
 		addr = 5'b0;
 		wr = 1'b1;
-		#200;
+		#500;
 		
 		data = 32'b11;
 		addr = 5'b1;
 		wr = 1'b1;	
-		#200;
+		#500;
 		
 		addr = 5'b1;
 		wr = 1'b0;
-		#200;
+		#500;
 		
 		addr = 5'b0;
-		#200;
-		
-		addr = 5'b1;
-		#200;
+		#500;
 	end
 	
 	always #50 clk = ~clk;
