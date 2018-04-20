@@ -22,25 +22,25 @@ module cache_4way(
 	reg [index_size-1:0] set_index;
 	reg [31:0] out_data;
 	
-	reg response_reg;	
-	wire response_ram;			
+	reg response_reg;		
 	
 	reg miss_reg;
 	reg [1:0] write_reg;
 	
-	reg [31:0] data_ram;
-	reg [31:0] addr_ram;
-	reg wr_ram;
-	reg clk_ram;
-	wire [31:0] out_ram;		
+	reg [31:0] ram_data;
+	reg [31:0] ram_addr;
+	reg ram_wr;
+	reg ram_clk;
+	wire ram_response;
+	wire [31:0] ram_out;		
 	
 	ram ram(
-			.data(data_ram),
-			.addr(addr_ram),
-			.wr(wr_ram),
-			.clk(clk_ram),
-			.response(response_ram),
-			.out(out_ram));			
+			.data(ram_data),
+			.addr(ram_addr),
+			.wr(ram_wr),
+			.clk(ram_clk),
+			.response(ram_response),
+			.out(ram_out));			
 	
 	initial
 	begin
@@ -64,13 +64,13 @@ module cache_4way(
 			set_index = addr - addr % 4;
 			response_reg = 0;						
 			
-			if (wr)		
+			if (wr)			
 			begin
 				if (valid_array[set_index*4] && valid_array[set_index*4+1] && valid_array[set_index*4+2] && valid_array[set_index*4+3])
 					valid_array[set_index*2+write_reg] = 0;
-				data_ram = data;
-				addr_ram = addr;
-				wr_ram = wr;		
+				ram_data = data;
+				ram_addr = addr;
+				ram_wr = wr;		
 				write_reg = write_reg +1;				
 			end
 			else
@@ -99,44 +99,44 @@ module cache_4way(
 					miss_reg = 0;
 					response_reg = 1;
 				end
-				else if (valid_array[set_index*4]&&valid_array[set_index*4+1]&&valid_array[set_index*4+2]&&!valid_array[set_index*4+3])
+				else if (valid_array[set_index*4] && valid_array[set_index*4+1] && valid_array[set_index*4+2] && !valid_array[set_index*4+3])
 				begin			
 					miss_reg = 1;
 				
-					data_ram = data;
-					addr_ram = addr;
-					wr_ram = wr;										
+					ram_data = data;
+					ram_addr = addr;
+					ram_wr = wr;										
 				end
-				else if (valid_array[set_index*4]&&valid_array[set_index*4+1]&&!valid_array[set_index*4+2])
+				else if (valid_array[set_index*4] && valid_array[set_index*4+1] && !valid_array[set_index*4+2])
 				begin				
 					miss_reg = 1;
 				
-					data_ram = data;
-					addr_ram = addr;
-					wr_ram = wr;					
+					ram_data = data;
+					ram_addr = addr;
+					ram_wr = wr;					
 				end
-				else if (valid_array[set_index*4]&&!valid_array[set_index*4+1])
+				else if (valid_array[set_index*4] && !valid_array[set_index*4+1])
 				begin
 					miss_reg = 1;
 					
-					data_ram = data;
-					addr_ram = addr;
-					wr_ram = wr;										
+					ram_data = data;
+					ram_addr = addr;
+					ram_wr = wr;										
 				end
 				else
 				begin
 					miss_reg = 1;
 					
-					data_ram = data;
-					addr_ram = addr;
-					wr_ram = wr;															
+					ram_data = data;
+					ram_addr = addr;
+					ram_wr = wr;															
 				end
 			end
 		end
 		else
 		begin
 			// waiting till ram will finish reading/writing
-			if (response_ram && ~response_reg)
+			if (ram_response && ~response_reg)
 			begin
 				// since all operations are finished, sets response state to 1
 				response_reg = 1;
@@ -144,29 +144,29 @@ module cache_4way(
 				begin
 					if (valid_array[set_index*4]&&valid_array[set_index*4+1]&&valid_array[set_index*4+2]&&!valid_array[set_index*4+3])
 					begin										
-						data_array[set_index*4+3] = out_ram;
-						out_data = out_ram;				
+						data_array[set_index*4+3] = ram_out;
+						out_data = ram_out;				
 						tag_array[set_index*4+3] = tag;				
 						valid_array[set_index*4+3] = 1;							
 					end
 					else if (valid_array[set_index*4]&&valid_array[set_index*4+1]&&!valid_array[set_index*4+2])
 					begin								
-						data_array[set_index*4+2] = out_ram;
-						out_data = out_ram;								
+						data_array[set_index*4+2] = ram_out;
+						out_data = ram_out;								
 						tag_array[set_index*4+2] = tag;				
 						valid_array[set_index*4+2] = 1;					
 					end
 					else if (valid_array[set_index*4]&&!valid_array[set_index*4+1])
 					begin				
-						data_array[set_index*4+1] = out_ram;
-						out_data = out_ram;								
+						data_array[set_index*4+1] = ram_out;
+						out_data = ram_out;								
 						tag_array[set_index*4+1] = tag;				
 						valid_array[set_index*4+1] = 1;					
 					end
 					else
 					begin															
-						data_array[set_index*4] = out_ram;
-						out_data = out_ram;				
+						data_array[set_index*4] = ram_out;
+						out_data = ram_out;				
 						tag_array[set_index*4] = tag;				
 						valid_array[set_index*4] = 1;			
 					end
