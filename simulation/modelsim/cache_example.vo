@@ -16,7 +16,7 @@
 // PROGRAM "Quartus Prime"
 // VERSION "Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition"
 
-// DATE "04/19/2018 22:23:28"
+// DATE "04/20/2018 14:21:17"
 
 // 
 // Device: Altera 10M50DAF484C7G Package FBGA484
@@ -28,7 +28,7 @@
 
 `timescale 1 ps/ 1 ps
 
-module rate_tb (
+module cache_example (
 	a);
 output 	a;
 

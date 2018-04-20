@@ -27,6 +27,7 @@ module ram (
 	reg [31:0] data_reg;	
 	reg [31:0] addr_reg;
 	reg wr_reg;	
+	reg [31:0] out_reg;
 	
 	//stores response state after computations in clock cycle and then assigns it to response output
 	reg response_reg;
@@ -56,13 +57,13 @@ module ram (
 			if (wr)
 				ram[addr] = data;
 			else
-				addr_reg = addr;		
+				out_reg = ram[addr];
 			
 			response_reg = 1;
 		end
 	end	
 	
-	assign out = ram[addr_reg];
+	assign out = out_reg;
 	assign response = response_reg;
 endmodule
 	

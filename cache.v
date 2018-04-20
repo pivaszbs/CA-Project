@@ -114,13 +114,14 @@ module cache
 					// since we found it in cache, it is not a missrate
 					is_missrate_reg = 0;					
 					// loading data from cache to output
-					out_reg = data_array[index];										
+					out_reg = data_array[index];		
+					// since all operations are finished, sets response state to 1
+					response_reg = 1;
 				end
 				else
 				begin		
 					// since we did not found it in cache, it is a missrate
-					is_missrate_reg = 1;								
-					
+					is_missrate_reg = 1;					
 					// updating ram inputs on given cache inputs
 					ram_data = data;
 					ram_addr = addr;
@@ -131,7 +132,7 @@ module cache
 		else
 		begin
 			// waiting till ram will finish reading/writing
-			if (ram_response)
+			if (ram_response && ~response_reg)
 			begin
 				// since all operations are finished, sets response state to 1
 				response_reg = 1;
