@@ -71,6 +71,7 @@ module cache_4way(
 		end
 		else
 		begin
+			//put in free place in cache block
 			if (valid_array[set_index*4] && tag == tag_array[set_index*4])
 			begin
 				out_data <= data_array[set_index*4];
@@ -92,6 +93,7 @@ module cache_4way(
 				out_data <= data_array[set_index*4+3];
 			end
 			else if (valid_array[set_index*4]&&valid_array[set_index*4+1]&&valid_array[set_index*4+2]&&!valid_array[set_index*4+3])
+			//take info from RAM
 			begin
 				enable_reg <= 1;
 				#125
