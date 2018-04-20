@@ -35,11 +35,11 @@ module cache
 	
 	// arrays of address, splited on validity bit, tag and index	
 	reg valid_array [size - 1:0];		
-	reg [29:0] tag_array [size - 1:0];
-	reg [1:0] index_array [size - 1:0];	
+	reg [31-index_size:0] tag_array [size - 1:0];
+	reg [index_size-1:0] index_array [size - 1:0];	
 	
 	// registers for tag and index
-	reg [size - index_size - 1:0] tag;
+	reg [31 - index_size:0] tag;
 	reg [index_size - 1:0] index;	
 	
 	// input registers (to detect input changes in always block)
@@ -91,7 +91,7 @@ module cache
 			wr_reg = wr;					
 			
 			//caculating of tag and index
-			tag = addr >> 2;
+			tag = addr >> index_size;
 			index = addr;
 			
 			// if write mode
