@@ -7,7 +7,7 @@ module cache_4way(
 	output [31:0] out
 );
 	parameter size = 64;
-	parameter index_size = 6;
+	parameter index_size = 4;
 	
 	reg [31:0] data_array [size-1:0];
 	reg valid_array [size-1:0];	
@@ -25,7 +25,6 @@ module cache_4way(
 	reg [31:0] addr_ram;
 	reg wr_ram;
 	reg clk_ram;
-	reg[31:0] missrate_counter;
 	
 	reg miss_reg;
 	reg [1:0] write_reg;
@@ -48,7 +47,6 @@ module cache_4way(
 	begin
 		write_reg = 0;
 		clk_ram = 1'b1;
-		missrate_counter = 0;
 	end
 	
 	always #50 clk_ram = ~clk_ram;
@@ -60,7 +58,7 @@ module cache_4way(
 		addr_ram <= addr;
 		wr_ram <= wr;
 		tag <= addr << index_size;
-		set_index <= (addr >> (31-index_size)) - addr % 4;
+		set_index <= addr - addr % 4;
 		enable_reg <= 0;
 		
 		if (wr)		
@@ -69,7 +67,6 @@ module cache_4way(
 				valid_array[set_index*2+write_reg] <= 0;
 			enable_reg <= 1;
 			miss_reg = 1;
-			missrate_counter=missrate_counter+1;
 			write_reg = write_reg +1;
 		end
 		else
@@ -102,8 +99,7 @@ module cache_4way(
 				tag_array[set_index*4+3] <= tag;				
 				valid_array[set_index*4+3] <= 1;
 				out_data <= out_ram;
-				miss_reg = 1;
-				missrate_counter=missrate_counter+1;	
+				miss_reg = 1;	
 			end
 			else if (valid_array[set_index*4]&&valid_array[set_index*4+1]&&!valid_array[set_index*4+2])
 			begin
@@ -114,7 +110,6 @@ module cache_4way(
 				valid_array[set_index*4+2] <= 1;
 				out_data <= out_ram;
 				miss_reg = 1;
-				missrate_counter=missrate_counter+1;
 			end
 			else if (valid_array[set_index*4]&&!valid_array[set_index*4+1])
 			begin
@@ -125,7 +120,6 @@ module cache_4way(
 				valid_array[set_index*4+1] <= 1;
 				out_data <= out_ram;
 				miss_reg = 1;
-				missrate_counter=missrate_counter+1;
 			end
 			else
 			begin
@@ -136,7 +130,6 @@ module cache_4way(
 				valid_array[set_index*4] <= 1;
 				out_data <= out_ram;
 				miss_reg = 1;
-				missrate_counter=missrate_counter+1;
 			end
 		end
 	end

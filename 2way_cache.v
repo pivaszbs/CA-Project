@@ -8,7 +8,7 @@
 );
 
 	parameter size = 64;
-	parameter index_size = 6;
+	parameter index_size = 5;
 	
 	reg [31:0] data_array [size-1:0];  // internal storage
 	reg valid_array [size-1:0];	
