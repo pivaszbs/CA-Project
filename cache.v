@@ -25,7 +25,7 @@ module cache
 	output [31:0] out
 );	
 	// constant cache size
-	parameter size = 1024;
+	parameter size = 128;
 	// how many bits we have for index
 	parameter index_size = 10;	
 	
@@ -96,10 +96,11 @@ module cache
 			
 			// if write mode
 			if (wr)
-			begin		
+			begin
 				// updating arrays in the cache
 				data_array[index] = data;
 				tag_array[index] = tag;			
+				valid_array[index] = 1;
 				
 				// updating ram inputs
 				ram_data = data;

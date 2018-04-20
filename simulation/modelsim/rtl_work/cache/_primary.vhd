@@ -2,7 +2,7 @@ library verilog;
 use verilog.vl_types.all;
 entity cache is
     generic(
-        size            : integer := 1024;
+        size            : integer := 128;
         index_size      : integer := 10
     );
     port(

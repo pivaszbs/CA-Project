@@ -1,8 +1,8 @@
-|cache_example
-a << <GND>
+|rate_tb
+a <= <GND>
 
 
-|cache_example|cache:cache
+|rate_tb|cache:cache
 data[0] => Equal0.IN31
 data[0] => ram_data.DATAA
 data[0] => ram_data.DATAB
@@ -222,27 +222,15 @@ addr[6] => tag_array.RADDR6
 addr[7] => Equal1.IN24
 addr[7] => ram_addr.DATAA
 addr[7] => ram_addr.DATAB
-addr[7] => data_array.DATAB
 addr[7] => addr_reg[7].DATAIN
-addr[7] => data_array.RADDR7
-addr[7] => valid_array.RADDR7
-addr[7] => tag_array.RADDR7
 addr[8] => Equal1.IN23
 addr[8] => ram_addr.DATAA
 addr[8] => ram_addr.DATAB
-addr[8] => data_array.DATAB
 addr[8] => addr_reg[8].DATAIN
-addr[8] => data_array.RADDR8
-addr[8] => valid_array.RADDR8
-addr[8] => tag_array.RADDR8
 addr[9] => Equal1.IN22
 addr[9] => ram_addr.DATAA
 addr[9] => ram_addr.DATAB
-addr[9] => data_array.DATAB
 addr[9] => addr_reg[9].DATAIN
-addr[9] => data_array.RADDR9
-addr[9] => valid_array.RADDR9
-addr[9] => tag_array.RADDR9
 addr[10] => Equal1.IN21
 addr[10] => Equal2.IN21
 addr[10] => ram_addr.DATAA
@@ -548,7 +536,7 @@ out[30] <= out_reg[30].DB_MAX_OUTPUT_PORT_TYPE
 out[31] <= out_reg[31].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|cache_example|cache:cache|ram:ram
+|rate_tb|cache:cache|ram:ram
 data[0] => Equal0.IN31
 data[0] => ram.data_a[0].DATAIN
 data[0] => data_reg[0].DATAIN
@@ -703,15 +691,30 @@ addr[4] => addr_reg[4].DATAIN
 addr[4] => ram.WADDR4
 addr[4] => ram.RADDR4
 addr[5] => Equal1.IN26
+addr[5] => ram.waddr_a[5].DATAIN
 addr[5] => addr_reg[5].DATAIN
+addr[5] => ram.WADDR5
+addr[5] => ram.RADDR5
 addr[6] => Equal1.IN25
+addr[6] => ram.waddr_a[6].DATAIN
 addr[6] => addr_reg[6].DATAIN
+addr[6] => ram.WADDR6
+addr[6] => ram.RADDR6
 addr[7] => Equal1.IN24
+addr[7] => ram.waddr_a[7].DATAIN
 addr[7] => addr_reg[7].DATAIN
+addr[7] => ram.WADDR7
+addr[7] => ram.RADDR7
 addr[8] => Equal1.IN23
+addr[8] => ram.waddr_a[8].DATAIN
 addr[8] => addr_reg[8].DATAIN
+addr[8] => ram.WADDR8
+addr[8] => ram.RADDR8
 addr[9] => Equal1.IN22
+addr[9] => ram.waddr_a[9].DATAIN
 addr[9] => addr_reg[9].DATAIN
+addr[9] => ram.WADDR9
+addr[9] => ram.RADDR9
 addr[10] => Equal1.IN21
 addr[10] => addr_reg[10].DATAIN
 addr[11] => Equal1.IN20
@@ -792,6 +795,11 @@ wr => out_reg.OUTPUTSELECT
 wr => ram.DATAA
 wr => wr_reg.DATAIN
 clk => ram.we_a.CLK
+clk => ram.waddr_a[9].CLK
+clk => ram.waddr_a[8].CLK
+clk => ram.waddr_a[7].CLK
+clk => ram.waddr_a[6].CLK
+clk => ram.waddr_a[5].CLK
 clk => ram.waddr_a[4].CLK
 clk => ram.waddr_a[3].CLK
 clk => ram.waddr_a[2].CLK

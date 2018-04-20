@@ -20,8 +20,10 @@ module ram (
 	output [31:0] out
 );		
 
+	parameter size = 1024;
+
 	//data storage
-	reg [31:0] ram [31:0];
+	reg [31:0] ram [size-1:0];
 			
 	//these registers store state of ram at the previous clock cycle
 	reg [31:0] data_reg;	
@@ -41,7 +43,7 @@ module ram (
 		wr_reg = 0;
 	end
 	
-	always @(posedge clk)
+	always @(negedge clk)
 	begin
 		//comparing current ram state with previous
 		if ((data != data_reg) || (addr != addr_reg) || (wr != wr_reg))
