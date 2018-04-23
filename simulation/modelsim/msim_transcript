@@ -16,12 +16,12 @@
 # 
 # Top level modules:
 # 	cache_example
-# vlog -vlog01compat -work work +incdir+C:/Repositories/CA-Project {C:/Repositories/CA-Project/4way_cache.v}
+# vlog -vlog01compat -work work +incdir+C:/Repositories/CA-Project {C:/Repositories/CA-Project/2way_cache.v}
 # Model Technology ModelSim ALTERA vlog 10.1b Compiler 2012.04 Apr 27 2012
-# -- Compiling module cache_4way
+# -- Compiling module cache_2way
 # 
 # Top level modules:
-# 	cache_4way
+# 	cache_2way
 # vlog -vlog01compat -work work +incdir+C:/Repositories/CA-Project {C:/Repositories/CA-Project/ram.v}
 # Model Technology ModelSim ALTERA vlog 10.1b Compiler 2012.04 Apr 27 2012
 # -- Compiling module ram
@@ -32,14 +32,26 @@
 vsim -voptargs=+acc work.cache_example
 # vsim -voptargs=+acc work.cache_example 
 # Loading work.cache_example
-# Loading work.cache_4way
+# Loading work.cache_2way
 # Loading work.ram
 # ** Warning: (vsim-3017) C:/Repositories/CA-Project/cache_example.v(17): [TFMPC] - Too few port connections. Expected 7, found 6.
 # 
-#         Region: /cache_example/cache_4way
+#         Region: /cache_example/cache_2way
 # ** Warning: (vsim-3722) C:/Repositories/CA-Project/cache_example.v(17): [TFMPC] - Missing connection for port 'response'.
 # 
 add wave -position insertpoint sim:/cache_example/*
+run
+run
+run
+run
+run
+restart -f
+# ** Warning: (vsim-3017) C:/Repositories/CA-Project/cache_example.v(17): [TFMPC] - Too few port connections. Expected 7, found 6.
+# 
+#         Region: /cache_example/cache_2way
+# ** Warning: (vsim-3722) C:/Repositories/CA-Project/cache_example.v(17): [TFMPC] - Missing connection for port 'response'.
+# 
+add wave -position insertpoint sim:/cache_example/cache_2way/*
 run
 run
 run

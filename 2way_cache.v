@@ -3,12 +3,20 @@
 	input [31:0] addr,
 	input wr,
 	input clk,
+	output response,
 	output is_missrate,
 	output [31:0] out
 );
 
 	parameter size = 64;
-	parameter index_size = 5;
+	parameter index_size = 4;
+	
+	// input registers (to detect input changes in always block)
+	reg [31:0] data_reg;
+	reg [31:0] addr_reg;
+	reg wr_reg;
+	
+	reg response_reg;
 	
 	reg [31:0] data_array [size-1:0];  // internal storage
 	reg valid_array [size-1:0];	
@@ -18,91 +26,125 @@
 	reg [index_size-1:0] set_index;
 	reg [31:0] out_data;
 	
-	wire [31:0] out_ram;
+	wire [31:0] ram_out;
 	
 	
-	reg [31:0] data_ram; //input for RAM
-	reg [31:0] addr_ram; //addr for RAM
-	reg wr_ram;  
+	reg [31:0] ram_data; //input for RAM
+	reg [31:0] ram_addr; //addr for RAM
+	reg ram_wr;  
 	reg clk_ram;
-	wire ram_state; // check whether RAM is end it's work
+	wire ram_response; // check whether RAM is end it's work
 	
-	reg miss_reg;
-	reg write_reg; //register for choose, which block rewrite
-	reg state_reg;
+	reg is_missrate_reg;
+	reg write_reg; //register for choose, which block rewrite	
+	
 	//RAM module
 	ram ram(
-			.data(data_ram),
-			.addr(addr_ram),
-			.wr(wr_ram),
+			.data(ram_data),
+			.addr(ram_addr),
+			.wr(ram_wr),
 			.clk(clk),
-			.response(ram_state),
-			.out(out_ram));
+			.response(ram_response),
+			.out(ram_out));
 	
 	initial
 	begin
+		data_reg = 0;
+		addr_reg = 0;
+		wr_reg = 0;
+		response_reg = 1;
+	
 		write_reg = 0;
-		miss_reg = 0;
+		is_missrate_reg = 0;
 	end
 	
 	always @(posedge clk)
 	begin
-		// set same inputs in RAM
-		data_ram = data;
-		addr_ram = addr;
-		wr_ram = wr;
-		//caculating of tag and index
-		tag <= addr >> index_size;
-		set_index = addr - addr%2;
+		// if any input has been changed
+		if (data_reg != data || addr_reg != addr || wr_reg != wr)
+		begin		
+			// setting response register to 0
+			response_reg = 0;
+			
+			// updating input registers
+			data_reg = data;
+			addr_reg = addr;
+			wr_reg = wr;
 		
-		if (wr)		
-		begin
-		if (valid_array[set_index*2] && valid_array[set_index*2+1]) // if no free place -> rewrite
-				valid_array[set_index*2+write_reg] = 0;
-			write_reg = write_reg+1;
-			miss_reg = 1;
-		end
-		else
-		
-		begin
-			//put in free place in cache block
-			if (valid_array[set_index*2] && tag == tag_array[set_index*2])
+			//caculating of tag and index
+			tag <= addr >> index_size;
+			set_index = addr - addr%2;
+			
+			if (wr)
 			begin
-				out_data = data_array[set_index*2];
-				miss_reg = 0;
+				if (valid_array[set_index*2] && valid_array[set_index*2+1]) // if no free place -> rewrite
+					valid_array[set_index*2+write_reg] = 0;
+				
+				// updating ram inputs on given cache inputs
+				ram_data = data;
+				ram_addr = addr;
+				ram_wr = wr;
+				
+				write_reg = write_reg+1;
 			end
-			else if (valid_array[set_index*2+1] && tag == tag_array[set_index*2+1])
+			else		
 			begin
-				out_data = data_array[set_index*2+1];
-				miss_reg = 0;
-			end
-			else if (valid_array[set_index*2]&&!valid_array[set_index*2+1])
-			begin
-			//take info from RAM
-				if (ram_state)
+				//put in free place in cache block
+				if (valid_array[set_index*2] && tag == tag_array[set_index*2])
 				begin
-				data_array[set_index*2+1] = out_ram;
-				tag_array[set_index*2+1] = tag;				
-				valid_array[set_index*2+1] = 1;
-				out_data = out_ram;
-				miss_reg = 1;
+					is_missrate_reg = 0;
+				
+					out_data = data_array[set_index*2];					
+					response_reg = 1;
+				end
+				else if (valid_array[set_index*2+1] && tag == tag_array[set_index*2+1])
+				begin
+					is_missrate_reg = 0;
+				
+					out_data = data_array[set_index*2+1];
+					response_reg = 1;
+				end				
+				else
+				begin
+					is_missrate_reg = 1;
+					
+					// updating ram inputs on given cache inputs
+					ram_data = data;
+					ram_addr = addr;
+					ram_wr = wr;					
 				end
 			end
-			else
+		end
+		else
+		begin
+			// waiting till ram will finish reading/writing
+			if (ram_response && ~response_reg)
 			begin
-			if (ram_state)
-			begin
-				data_array[set_index*2] = out_ram;
-				tag_array[set_index*2] = tag;				
-				valid_array[set_index*2] = 1;
-				out_data = out_ram;
-				miss_reg = 1;
-			end
+				// since all operations are finished, sets response state to 1
+				response_reg = 1;
+				// if it is reading mode, then updates cache data and output
+				if (wr == 0)
+				begin
+					if (valid_array[set_index*2]&&!valid_array[set_index*2+1])
+					begin
+						data_array[set_index*2+1] = ram_out;
+						tag_array[set_index*2+1] = tag;				
+						valid_array[set_index*2+1] = 1;						
+					end
+					else
+					begin
+						data_array[set_index*2] = ram_out;
+						tag_array[set_index*2] = tag;				
+						valid_array[set_index*2] = 1;						
+					end
+					out_data = ram_out;				
+				end
 			end
 		end
 	end	
 	
-	assign is_missrate = miss_reg;
+	assign response = response_reg;
+	assign is_missrate = is_missrate_reg;
 	assign out = out_data;
 	
 endmodule

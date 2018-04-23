@@ -85,10 +85,10 @@ module cache
 			// setting response register to 0
 			response_reg = 0;
 			
-			// updating input registers from
+			// updating input registers
 			data_reg = data;
 			addr_reg = addr;
-			wr_reg = wr;					
+			wr_reg = wr;			
 			
 			//caculating of tag and index
 			tag = addr >> index_size;

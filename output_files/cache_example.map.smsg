@@ -1,1 +1,1 @@
-Warning (10268): Verilog HDL information at 2way_cache.v(48): always construct contains both blocking and non-blocking assignments File: C:/Repositories/CA-Project/2way_cache.v Line: 48
+Warning (10268): Verilog HDL information at 2way_cache.v(61): always construct contains both blocking and non-blocking assignments File: C:/Repositories/CA-Project/2way_cache.v Line: 61

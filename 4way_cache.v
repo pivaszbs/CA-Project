@@ -53,17 +53,21 @@ module cache_4way(
 	
 	always @(posedge clk)
 	begin
+		// if any input changed
 		if (data != data_reg || addr != addr_reg || wr != wr_reg)
 		begin
+			// setting response register to 0
+			response_reg = 0;
+		
+			// updating input registers
 			data_reg = data;
 			addr_reg = addr;
 			wr_reg = wr;
 		
 			tag = addr << index_size;
-			set_index = addr - addr % 4;	
-			response_reg = 0;		
+			set_index = addr - addr % 4;				
 			
-			if (wr)			
+			if (wr)
 			begin
 				if (valid_array[set_index*4] && valid_array[set_index*4+1] && valid_array[set_index*4+2] && valid_array[set_index*4+3])
 					valid_array[set_index*2+write_reg] = 0;

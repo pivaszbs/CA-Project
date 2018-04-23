@@ -1,9 +1,9 @@
 library verilog;
 use verilog.vl_types.all;
-entity cache_4way is
+entity cache_2way is
     generic(
         size            : integer := 64;
-        index_size      : integer := 4
+        index_size      : integer := 5
     );
     port(
         data            : in     vl_logic_vector(31 downto 0);
@@ -17,4 +17,4 @@ entity cache_4way is
     attribute mti_svvh_generic_type : integer;
     attribute mti_svvh_generic_type of size : constant is 1;
     attribute mti_svvh_generic_type of index_size : constant is 1;
-end cache_4way;
+end cache_2way;
