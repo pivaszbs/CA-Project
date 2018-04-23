@@ -3,25 +3,45 @@ K3
 13
 cModel Technology
 Z0 dC:\Repositories\CA-Project\simulation\modelsim
-vcache
-Io=NY1LQ:dJO;WLHMVb;m]2
-V[2Ko9EkG[7[=:0L86[OOM0
+vcache_4way
+Ihe^IfA>:PGgFM:E12mbF=2
+V5KEm@6;F4zdRL7bRNPi[S3
 Z1 dC:\Repositories\CA-Project\simulation\modelsim
-w1524232945
-Z2 8C:/Repositories/CA-Project/cache.v
-Z3 FC:/Repositories/CA-Project/cache.v
+w1524486820
+8C:/Repositories/CA-Project/4way_cache.v
+FC:/Repositories/CA-Project/4way_cache.v
 L0 1
-Z4 OV;L;10.1b;51
+Z2 OV;L;10.1b;51
 r1
 31
-Z5 o-vlog01compat -work work -O0
-Z6 !s92 -vlog01compat -work work +incdir+C:/Repositories/CA-Project -O0
+Z3 o-vlog01compat -work work -O0
+Z4 !s92 -vlog01compat -work work +incdir+C:/Repositories/CA-Project -O0
 !i10b 1
-!s100 74]`25jdkCh;8;bO7@m9a3
+!s100 bR8c=PiJb4Oz]L]UKgMKN2
 !s85 0
-!s108 1524233217.235000
-!s107 C:/Repositories/CA-Project/cache.v|
-!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Repositories/CA-Project|C:/Repositories/CA-Project/cache.v|
+!s108 1524486938.049000
+!s107 C:/Repositories/CA-Project/4way_cache.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Repositories/CA-Project|C:/Repositories/CA-Project/4way_cache.v|
+!s101 -O0
+vcache_example
+I4UhlAAOKA=Q@TYZ=78E@Y3
+V@hhinz03DdaLjKMT4E3FI0
+R1
+w1524484987
+8C:/Repositories/CA-Project/cache_example.v
+FC:/Repositories/CA-Project/cache_example.v
+L0 1
+R2
+r1
+31
+R3
+R4
+!i10b 1
+!s100 ;Gb=:M;`M62SiMdVkRPCe2
+!s85 0
+!s108 1524486937.872000
+!s107 C:/Repositories/CA-Project/cache_example.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Repositories/CA-Project|C:/Repositories/CA-Project/cache_example.v|
 !s101 -O0
 vram
 !i10b 1
@@ -33,33 +53,13 @@ w1524232969
 8C:/Repositories/CA-Project/ram.v
 FC:/Repositories/CA-Project/ram.v
 L0 1
-R4
+R2
 r1
 !s85 0
 31
-!s108 1524233217.949000
+!s108 1524486938.252000
 !s107 C:/Repositories/CA-Project/ram.v|
 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Repositories/CA-Project|C:/Repositories/CA-Project/ram.v|
 !s101 -O0
-R5
-R6
-vrate_tb
-ILk2m3OR1DFbhd?XN?RS2F1
-V:B>ML4KI3]E525D7;miEz2
-R1
-w1524232932
-Z7 8C:/Repositories/CA-Project/rate_tb.v
-Z8 FC:/Repositories/CA-Project/rate_tb.v
-L0 1
+R3
 R4
-r1
-31
-R5
-R6
-!i10b 1
-!s100 >a71TI2Bz3;R361i@@VcX1
-!s85 0
-!s108 1524233217.557000
-!s107 C:/Repositories/CA-Project/rate_tb.v|
-!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Repositories/CA-Project|C:/Repositories/CA-Project/rate_tb.v|
-!s101 -O0

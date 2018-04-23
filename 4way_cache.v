@@ -29,8 +29,7 @@ module cache_4way(
 	
 	reg [31:0] ram_data;
 	reg [31:0] ram_addr;
-	reg ram_wr;
-	reg ram_clk;
+	reg ram_wr;	
 	wire ram_response;
 	wire [31:0] ram_out;		
 	
@@ -38,7 +37,7 @@ module cache_4way(
 			.data(ram_data),
 			.addr(ram_addr),
 			.wr(ram_wr),
-			.clk(ram_clk),
+			.clk(clk),
 			.response(ram_response),
 			.out(ram_out));			
 	
@@ -61,42 +60,48 @@ module cache_4way(
 			wr_reg = wr;
 		
 			tag = addr << index_size;
-			set_index = addr - addr % 4;
-			response_reg = 0;						
+			set_index = addr - addr % 4;	
+			response_reg = 0;		
 			
 			if (wr)			
 			begin
 				if (valid_array[set_index*4] && valid_array[set_index*4+1] && valid_array[set_index*4+2] && valid_array[set_index*4+3])
 					valid_array[set_index*2+write_reg] = 0;
+					
 				ram_data = data;
 				ram_addr = addr;
 				ram_wr = wr;		
+				
 				write_reg = write_reg +1;				
 			end
 			else
 			begin
 				if (valid_array[set_index*4] && tag == tag_array[set_index*4])
 				begin
-					out_data = data_array[set_index*4];
 					miss_reg = 0;
+				
+					out_data = data_array[set_index*4];					
 					response_reg = 1;
 				end
 				else if (valid_array[set_index*4+1] && tag == tag_array[set_index*4+1])
 				begin
-					out_data = data_array[set_index*4+1];
 					miss_reg = 0;
+				
+					out_data = data_array[set_index*4+1];					
 					response_reg = 1;
 				end
 				else if (valid_array[set_index*4+2] && tag == tag_array[set_index*4+2])
 				begin					
-					out_data = data_array[set_index*4+2];
 					miss_reg = 0;
+				
+					out_data = data_array[set_index*4+2];					
 					response_reg = 1;
 				end
 				else if (valid_array[set_index*4+3] && tag == tag_array[set_index*4+3])
 				begin					
-					out_data = data_array[set_index*4+3];
 					miss_reg = 0;
+				
+					out_data = data_array[set_index*4+3];					
 					response_reg = 1;
 				end
 				else if (valid_array[set_index*4] && valid_array[set_index*4+1] && valid_array[set_index*4+2] && !valid_array[set_index*4+3])
@@ -142,7 +147,7 @@ module cache_4way(
 				response_reg = 1;
 				if (wr == 0)
 				begin
-					if (valid_array[set_index*4]&&valid_array[set_index*4+1]&&valid_array[set_index*4+2]&&!valid_array[set_index*4+3])
+					if (valid_array[set_index*4] && valid_array[set_index*4+1] && valid_array[set_index*4+2] && !valid_array[set_index*4+3])
 					begin										
 						data_array[set_index*4+3] = ram_out;
 						out_data = ram_out;				

@@ -1,5 +1,5 @@
 Analysis & Synthesis report for cache_example
-Fri Apr 20 17:03:28 2018
+Mon Apr 23 15:34:11 2018
 Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
 
 
@@ -14,9 +14,9 @@ Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
   8. General Register Statistics
-  9. Parameter Settings for User Entity Instance: cache:cache
- 10. Parameter Settings for User Entity Instance: cache:cache|ram:ram
- 11. Port Connectivity Checks: "cache:cache"
+  9. Parameter Settings for User Entity Instance: cache_4way:cache_4way
+ 10. Parameter Settings for User Entity Instance: cache_4way:cache_4way|ram:ram
+ 11. Port Connectivity Checks: "cache_4way:cache_4way"
  12. Post-Synthesis Netlist Statistics for Top Partition
  13. Elapsed Time Per Partition
  14. Analysis & Synthesis Messages
@@ -46,10 +46,10 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Fri Apr 20 17:03:28 2018       ;
+; Analysis & Synthesis Status        ; Successful - Mon Apr 23 15:34:11 2018       ;
 ; Quartus Prime Version              ; 17.1.0 Build 590 10/25/2017 SJ Lite Edition ;
 ; Revision Name                      ; cache_example                               ;
-; Top-level Entity Name              ; rate_tb                                     ;
+; Top-level Entity Name              ; cache_example                               ;
 ; Family                             ; MAX 10                                      ;
 ; Total logic elements               ; 0                                           ;
 ;     Total combinational functions  ; 0                                           ;
@@ -71,7 +71,7 @@ refer to the applicable agreement for further details.
 ; Option                                                                     ; Setting            ; Default Value      ;
 +----------------------------------------------------------------------------+--------------------+--------------------+
 ; Device                                                                     ; 10M50DAF484C7G     ;                    ;
-; Top-level entity name                                                      ; rate_tb            ; cache_example      ;
+; Top-level entity name                                                      ; cache_example      ; cache_example      ;
 ; Family name                                                                ; MAX 10             ; Cyclone V          ;
 ; Use smart compilation                                                      ; Off                ; Off                ;
 ; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
@@ -167,15 +167,15 @@ refer to the applicable agreement for further details.
 +----------------------------+-------------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                       ;
-+----------------------------------+-----------------+------------------------+--------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path         ; Library ;
-+----------------------------------+-----------------+------------------------+--------------------------------------+---------+
-; cache.v                          ; yes             ; User Verilog HDL File  ; C:/Repositories/CA-Project/cache.v   ;         ;
-; rate_tb.v                        ; yes             ; User Verilog HDL File  ; C:/Repositories/CA-Project/rate_tb.v ;         ;
-; ram.v                            ; yes             ; User Verilog HDL File  ; C:/Repositories/CA-Project/ram.v     ;         ;
-+----------------------------------+-----------------+------------------------+--------------------------------------+---------+
++------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                             ;
++----------------------------------+-----------------+------------------------+--------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path               ; Library ;
++----------------------------------+-----------------+------------------------+--------------------------------------------+---------+
+; cache_example.v                  ; yes             ; User Verilog HDL File  ; C:/Repositories/CA-Project/cache_example.v ;         ;
+; 4way_cache.v                     ; yes             ; User Verilog HDL File  ; C:/Repositories/CA-Project/4way_cache.v    ;         ;
+; ram.v                            ; yes             ; User Verilog HDL File  ; C:/Repositories/CA-Project/ram.v           ;         ;
++----------------------------------+-----------------+------------------------+--------------------------------------------+---------+
 
 
 +--------------------------------------------------------+
@@ -209,13 +209,13 @@ refer to the applicable agreement for further details.
 +---------------------------------------------+----------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                ;
-+----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------+-------------+--------------+
-; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name ; Entity Name ; Library Name ;
-+----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------+-------------+--------------+
-; |rate_tb                   ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 1    ; 0            ; 0          ; |rate_tb            ; rate_tb     ; work         ;
-+----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------+-------------+--------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                  ;
++----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------+---------------+--------------+
+; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name ; Entity Name   ; Library Name ;
++----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------+---------------+--------------+
+; |cache_example             ; 0 (0)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 1    ; 0            ; 0          ; |cache_example      ; cache_example ; work         ;
++----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------+---------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
@@ -234,29 +234,29 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 
 
-+----------------------------------------------------------+
-; Parameter Settings for User Entity Instance: cache:cache ;
-+----------------+-------+---------------------------------+
-; Parameter Name ; Value ; Type                            ;
-+----------------+-------+---------------------------------+
-; size           ; 128   ; Signed Integer                  ;
-; index_size     ; 10    ; Signed Integer                  ;
-+----------------+-------+---------------------------------+
++--------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: cache_4way:cache_4way ;
++----------------+-------+-------------------------------------------+
+; Parameter Name ; Value ; Type                                      ;
++----------------+-------+-------------------------------------------+
+; size           ; 64    ; Signed Integer                            ;
+; index_size     ; 4     ; Signed Integer                            ;
++----------------+-------+-------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: cache:cache|ram:ram ;
-+----------------+-------+-----------------------------------------+
-; Parameter Name ; Value ; Type                                    ;
-+----------------+-------+-----------------------------------------+
-; size           ; 1024  ; Signed Integer                          ;
-+----------------+-------+-----------------------------------------+
++----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: cache_4way:cache_4way|ram:ram ;
++----------------+-------+---------------------------------------------------+
+; Parameter Name ; Value ; Type                                              ;
++----------------+-------+---------------------------------------------------+
+; size           ; 1024  ; Signed Integer                                    ;
++----------------+-------+---------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
 +--------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "cache:cache"                                                                                                    ;
+; Port Connectivity Checks: "cache_4way:cache_4way"                                                                                          ;
 +-------------+--------+----------+----------------------------------------------------------------------------------------------------------+
 ; Port        ; Type   ; Severity ; Details                                                                                                  ;
 +-------------+--------+----------+----------------------------------------------------------------------------------------------------------+
@@ -296,7 +296,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
-    Info: Processing started: Fri Apr 20 17:03:05 2018
+    Info: Processing started: Mon Apr 23 15:33:45 2018
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off cache_example -c cache_example
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
@@ -314,34 +314,30 @@ Info (12021): Found 1 design units, including 1 entities, in source file ram.v
     Info (12023): Found entity 1: ram File: C:/Repositories/CA-Project/ram.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file ram_test_bench.v
     Info (12023): Found entity 1: ram_test_bench File: C:/Repositories/CA-Project/ram_test_bench.v Line: 1
-Info (12127): Elaborating entity "rate_tb" for the top level hierarchy
-Warning (10036): Verilog HDL or VHDL warning at rate_tb.v(7): object "state" assigned a value but never read File: C:/Repositories/CA-Project/rate_tb.v Line: 7
-Warning (10175): Verilog HDL warning at rate_tb.v(10536): ignoring unsupported system task File: C:/Repositories/CA-Project/rate_tb.v Line: 10536
-Warning (10755): Verilog HDL warning at rate_tb.v(10539): assignments to clk create a combinational loop File: C:/Repositories/CA-Project/rate_tb.v Line: 10539
-Warning (10240): Verilog HDL Always Construct warning at rate_tb.v(10541): inferring latch(es) for variable "init_state", which holds its previous value in one or more paths through the always construct File: C:/Repositories/CA-Project/rate_tb.v Line: 10541
-Warning (10240): Verilog HDL Always Construct warning at rate_tb.v(10541): inferring latch(es) for variable "missrate_counter", which holds its previous value in one or more paths through the always construct File: C:/Repositories/CA-Project/rate_tb.v Line: 10541
-Warning (10240): Verilog HDL Always Construct warning at rate_tb.v(10541): inferring latch(es) for variable "hitrate_counter", which holds its previous value in one or more paths through the always construct File: C:/Repositories/CA-Project/rate_tb.v Line: 10541
-Warning (10034): Output port "a" at rate_tb.v(1) has no driver File: C:/Repositories/CA-Project/rate_tb.v Line: 1
-Info (12128): Elaborating entity "cache" for hierarchy "cache:cache" File: C:/Repositories/CA-Project/rate_tb.v Line: 20
-Warning (10230): Verilog HDL assignment warning at cache.v(94): truncated value with size 32 to match size of target (22) File: C:/Repositories/CA-Project/cache.v Line: 94
-Warning (10230): Verilog HDL assignment warning at cache.v(95): truncated value with size 32 to match size of target (10) File: C:/Repositories/CA-Project/cache.v Line: 95
-Info (12128): Elaborating entity "ram" for hierarchy "cache:cache|ram:ram" File: C:/Repositories/CA-Project/cache.v Line: 70
+Info (12127): Elaborating entity "cache_example" for the top level hierarchy
+Warning (10755): Verilog HDL warning at cache_example.v(41): assignments to clk create a combinational loop File: C:/Repositories/CA-Project/cache_example.v Line: 41
+Warning (10034): Output port "a" at cache_example.v(1) has no driver File: C:/Repositories/CA-Project/cache_example.v Line: 1
+Info (12128): Elaborating entity "cache_4way" for hierarchy "cache_4way:cache_4way" File: C:/Repositories/CA-Project/cache_example.v Line: 17
+Warning (10230): Verilog HDL assignment warning at 4way_cache.v(62): truncated value with size 32 to match size of target (28) File: C:/Repositories/CA-Project/4way_cache.v Line: 62
+Warning (10230): Verilog HDL assignment warning at 4way_cache.v(63): truncated value with size 32 to match size of target (4) File: C:/Repositories/CA-Project/4way_cache.v Line: 63
+Warning (10230): Verilog HDL assignment warning at 4way_cache.v(75): truncated value with size 32 to match size of target (2) File: C:/Repositories/CA-Project/4way_cache.v Line: 75
+Info (12128): Elaborating entity "ram" for hierarchy "cache_4way:cache_4way|ram:ram" File: C:/Repositories/CA-Project/4way_cache.v Line: 42
 Warning (12011): Net is missing source, defaulting to GND
-    Warning (12110): Net "clk" is missing source, defaulting to GND File: C:/Repositories/CA-Project/rate_tb.v Line: 6
+    Warning (12110): Net "clk" is missing source, defaulting to GND File: C:/Repositories/CA-Project/cache_example.v Line: 6
 Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "a" is stuck at GND File: C:/Repositories/CA-Project/rate_tb.v Line: 1
+    Warning (13410): Pin "a" is stuck at GND File: C:/Repositories/CA-Project/cache_example.v Line: 1
 Info (144001): Generated suppressed messages file C:/Repositories/CA-Project/output_files/cache_example.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
 Info (21057): Implemented 1 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 0 input pins
     Info (21059): Implemented 1 output pins
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 15 warnings
-    Info: Peak virtual memory: 663 megabytes
-    Info: Processing ended: Fri Apr 20 17:03:28 2018
-    Info: Elapsed time: 00:00:23
-    Info: Total CPU time (on all processors): 00:00:54
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 11 warnings
+    Info: Peak virtual memory: 691 megabytes
+    Info: Processing ended: Mon Apr 23 15:34:11 2018
+    Info: Elapsed time: 00:00:26
+    Info: Total CPU time (on all processors): 00:00:55
 
 
 +------------------------------------------+
