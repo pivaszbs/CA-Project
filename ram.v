@@ -46,20 +46,20 @@ module ram (
 	always @(negedge clk)
 	begin
 		//comparing current ram state with previous
-		if ((data != data_reg) || (addr != addr_reg) || (wr != wr_reg))
+		if ((data != data_reg) || (wr != wr_reg))
 		begin
 			//if something changes we set our response state to 0 and update previous state to current
 			response_reg = 0;
 			data_reg = data;
-			addr_reg = addr;
+			addr_reg = addr%size;
 			wr_reg = wr;
 		end
 		else
 		begin
 			if (wr)
-				ram[addr] = data;
+				ram[addr_reg] = data;
 			else
-				out_reg = ram[addr];
+				out_reg = ram[addr_reg];
 			
 			response_reg = 1;
 		end

@@ -12,13 +12,11 @@ module ram_test_bench(output a);
 	.addr(addr),	
 	.wr(wr),
 	.clk(clk),
-	.enable(enable),
 	.out(out));	
 	
 	initial
 	begin
 		clk = 1'b1;
-		enable = 1;
 	
 		data = 8'h01;
 		addr = 32'b01;

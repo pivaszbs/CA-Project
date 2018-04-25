@@ -9,7 +9,7 @@
 );
 
 	parameter size = 64;
-	parameter index_size = 4;
+	parameter index_size = 5;
 	
 	// input registers (to detect input changes in always block)
 	reg [31:0] data_reg;
@@ -73,19 +73,33 @@
 		
 			//caculating of tag and index
 			tag <= addr >> index_size;
-			set_index = addr - addr%2;
+			set_index = addr;
 			
 			if (wr)
 			begin
-				if (valid_array[set_index*2] && valid_array[set_index*2+1]) // if no free place -> rewrite
-					valid_array[set_index*2+write_reg] = 0;
-				
-				// updating ram inputs on given cache inputs
 				ram_data = data;
 				ram_addr = addr;
-				ram_wr = wr;
+				ram_wr = wr;	
+				if (!valid_array[set_index*2])
+				begin
+					data_array[set_index*2] = data;
+					tag_array[set_index*2] = tag;
+					valid_array[set_index*2] = 1;
+				end
 				
-				write_reg = write_reg+1;
+				else if (!valid_array[set_index*2+1])
+				begin
+					data_array[set_index*2+1] = data;
+					tag_array[set_index*2+1] = tag;
+					valid_array[set_index*2+1] = 1;
+				end
+				else
+				begin
+					data_array[set_index*2+write_reg] = data;
+					tag_array[set_index*2+write_reg] = tag;
+					valid_array[set_index*2+write_reg] = 1;
+					write_reg = write_reg + 1;
+				end		
 			end
 			else		
 			begin
@@ -107,7 +121,7 @@
 				else
 				begin
 					is_missrate_reg = 1;
-					
+					valid_array[set_index*2+write_reg] = 0;
 					// updating ram inputs on given cache inputs
 					ram_data = data;
 					ram_addr = addr;

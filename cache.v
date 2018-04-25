@@ -110,7 +110,7 @@ module cache
 			else
 			begin
 				// if there are exists data with given address in the cache
-				if (valid_array[index] && tag == tag_array[index])
+				if ((valid_array[index]) && (tag == tag_array[index]))
 				begin								
 					// since we found it in cache, it is not a missrate
 					is_missrate_reg = 0;					
@@ -133,7 +133,7 @@ module cache
 		else
 		begin
 			// waiting till ram will finish reading/writing
-			if (ram_response && ~response_reg)
+			if ((ram_response) && (!response_reg))
 			begin
 				// since all operations are finished, sets response state to 1
 				response_reg = 1;

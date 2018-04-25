@@ -8,7 +8,7 @@ module cache_example(output a);
 	wire is_missrate;
 	wire [31:0] out;
 	
-	cache_2way cache_2way(
+	cache_4way cache_4way(
 	.data(data),
 	.addr(addr),
 	.wr(wr),	
