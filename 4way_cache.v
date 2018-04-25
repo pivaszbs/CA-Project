@@ -119,8 +119,8 @@ module cache_4way(
 					data_array[set_index*4+write_reg] = data;
 					tag_array[set_index*4+write_reg] = tag;
 					valid_array[set_index*4+write_reg] = 1;
-					write_reg = write_reg + 1;
 					offset_array[set_index*4+write_reg] = block_offset;
+					write_reg = write_reg + 1;
 				end					
 			end
 			else
