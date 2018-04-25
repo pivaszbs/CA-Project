@@ -49,6 +49,7 @@
 			.response(ram_response),
 			.out(ram_out));
 	
+	integer i;
 	initial
 	begin
 		data_reg = 0;
@@ -56,6 +57,13 @@
 		wr_reg = 0;
 		response_reg = 1;
 	
+		for (i = 0; i < size; i=i+1)
+		begin
+			data_array[i] = 0;
+			tag_array[i] = 0;
+			valid_array[i] = 0;
+			offset_array[i] = 0;
+		end
 		write_reg = 0;
 		is_missrate_reg = 0;
 	end
@@ -74,8 +82,8 @@
 			wr_reg = wr;
 		
 			//caculating of tag and index
-			tag = addr >> index_size;
-			set_index = addr << 1;
+			tag = addr >> (index_size+1);
+			set_index = addr >> 1;
 			block_offset = addr;
 			
 			if (wr)
@@ -88,6 +96,7 @@
 					data_array[set_index*2] = data;
 					tag_array[set_index*2] = tag;
 					valid_array[set_index*2] = 1;
+					offset_array[set_index*2] = block_offset;
 				end
 				
 				else if (!valid_array[set_index*2+1])
@@ -95,6 +104,7 @@
 					data_array[set_index*2+1] = data;
 					tag_array[set_index*2+1] = tag;
 					valid_array[set_index*2+1] = 1;
+					offset_array[set_index*2+1] = block_offset;
 				end
 				else
 				begin
@@ -102,6 +112,7 @@
 					tag_array[set_index*2+write_reg] = tag;
 					valid_array[set_index*2+write_reg] = 1;
 					write_reg = write_reg + 1;
+					offset_array[set_index*2+write_reg] = block_offset;
 				end		
 			end
 			else		
@@ -146,13 +157,15 @@
 					begin
 						data_array[set_index*2+1] = ram_out;
 						tag_array[set_index*2+1] = tag;				
-						valid_array[set_index*2+1] = 1;						
+						valid_array[set_index*2+1] = 1;
+						offset_array[set_index*2] = block_offset;						
 					end
 					else
 					begin
 						data_array[set_index*2] = ram_out;
 						tag_array[set_index*2] = tag;				
 						valid_array[set_index*2] = 1;						
+						offset_array[set_index*2] = block_offset;
 					end
 					out_data = ram_out;				
 				end
