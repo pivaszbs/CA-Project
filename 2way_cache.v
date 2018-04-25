@@ -111,7 +111,7 @@
 					data_array[set_index*2+write_reg] = data;
 					tag_array[set_index*2+write_reg] = tag;
 					valid_array[set_index*2+write_reg] = 1;
-					write_reg = write_reg + 1;
+					write_reg = ~write_reg;
 					offset_array[set_index*2+write_reg] = block_offset;
 				end		
 			end
@@ -140,6 +140,7 @@
 					ram_data = data;
 					ram_addr = addr;
 					ram_wr = wr;					
+					write_reg = ~write_reg;
 				end
 			end
 		end

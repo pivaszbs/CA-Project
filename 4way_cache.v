@@ -119,8 +119,8 @@ module cache_4way(
 					data_array[set_index*4+write_reg] = data;
 					tag_array[set_index*4+write_reg] = tag;
 					valid_array[set_index*4+write_reg] = 1;
-					write_reg = write_reg +1;
 					offset_array[set_index*4+write_reg] = block_offset;
+					write_reg = write_reg + 1;
 				end					
 			end
 			else
@@ -160,6 +160,7 @@ module cache_4way(
 					ram_data = data;
 					ram_addr = addr;
 					ram_wr = wr;
+					write_reg = write_reg + 1;
 			end
 		end
 		else
@@ -185,7 +186,7 @@ module cache_4way(
 						out_data = ram_out;								
 						tag_array[set_index*4+2] = tag;				
 						valid_array[set_index*4+2] = 1;
-						offset_array[set_index*4+1] = block_offset;
+						offset_array[set_index*4+2] = block_offset;
 					end
 					else if (!valid_array[set_index*4+1])
 					begin				
@@ -201,7 +202,7 @@ module cache_4way(
 						out_data = ram_out;				
 						tag_array[set_index*4] = tag;				
 						valid_array[set_index*4] = 1;
-						offset_array[set_index*4+1] = block_offset;			
+						offset_array[set_index*4] = block_offset;			
 					end
 				end
 			end
