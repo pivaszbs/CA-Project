@@ -7,8 +7,8 @@ module cache_4way(
 	output is_missrate,
 	output [31:0] out
 );
-	parameter size = 64;
-	parameter index_size = 4;
+	parameter size = 1024;
+	parameter index_size = 8;
 	
 	reg [31:0] data_reg;
 	reg [31:0] addr_reg;
@@ -16,9 +16,9 @@ module cache_4way(
 	
 	reg [31:0] data_array [size-1:0];
 	reg valid_array [size-1:0];	
-	reg [31-index_size:0] tag_array [size-1:0];
+	reg [31-index_size+2:0] tag_array [size-1:0];
 	
-	reg [31-index_size:0] tag;
+	reg [31-index_size+2:0] tag;
 	reg [index_size-1:0] set_index;
 	reg [31:0] out_data;
 	

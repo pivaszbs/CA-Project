@@ -8,8 +8,8 @@
 	output [31:0] out
 );
 
-	parameter size = 64;
-	parameter index_size = 5;
+	parameter size = 1024;
+	parameter index_size = 9;
 	
 	// input registers (to detect input changes in always block)
 	reg [31:0] data_reg;
@@ -20,9 +20,9 @@
 	
 	reg [31:0] data_array [size-1:0];  // internal storage
 	reg valid_array [size-1:0];	
-	reg [31-index_size:0] tag_array [size-1:0];
+	reg [31-index_size+1:0] tag_array [size-1:0];
 	
-	reg [31-index_size:0] tag;  //divide adress on tag and index
+	reg [31-index_size+1:0] tag;  //divide adress on tag and index
 	reg [index_size-1:0] set_index;
 	reg [31:0] out_data;
 	

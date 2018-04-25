@@ -11,7 +11,7 @@ module rate_tb(output a);
 	
 	wire [31:0] out;
 	
-	cache cache(
+	cache_4way cache_4way(
 	.data(data),
 	.addr(addr),
 	.wr(wr),	
