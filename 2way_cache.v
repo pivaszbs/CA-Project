@@ -158,7 +158,7 @@
 						data_array[set_index*2+1] = ram_out;
 						tag_array[set_index*2+1] = tag;				
 						valid_array[set_index*2+1] = 1;
-						offset_array[set_index*2] = block_offset;						
+						offset_array[set_index*2+1] = block_offset;						
 					end
 					else
 					begin
