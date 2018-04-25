@@ -8,8 +8,8 @@
 	output [31:0] out
 );
 
-	parameter size = 1024;
-	parameter index_size = 9;
+	parameter size = 64;
+	parameter index_size = 5;
 	
 	// input registers (to detect input changes in always block)
 	reg [31:0] data_reg;

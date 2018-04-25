@@ -20,7 +20,7 @@ module ram (
 	output [31:0] out
 );		
 
-	parameter size = 1<<32;
+	parameter size = 1024;
 
 	//data storage
 	reg [31:0] ram [size-1:0];
@@ -39,19 +39,19 @@ module ram (
 	begin	
 		response_reg = 1;
 		data_reg = 0;
-		addr_reg = 0;
+		addr_reg = addr%size;
 		wr_reg = 0;
 	end
 	
 	always @(negedge clk)
 	begin
 		//comparing current ram state with previous
-		if ((data != data_reg) || (addr != addr_reg)|| (wr != wr_reg))
+		if ((data != data_reg) || (addr%size != addr_reg)|| (wr != wr_reg))
 		begin
 			//if something changes we set our response state to 0 and update previous state to current
 			response_reg = 0;
 			data_reg = data;
-			addr_reg = addr;
+			addr_reg = addr%size;
 			wr_reg = wr;
 		end
 		else

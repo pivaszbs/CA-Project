@@ -25,9 +25,9 @@ module cache
 	output [31:0] out
 );	
 	// constant cache size
-	parameter size = 1024;
+	parameter size = 64;
 	// how many bits we have for index
-	parameter index_size = 10;	
+	parameter index_size = 6;	
 	
 	// array of data
 	reg [31:0] data_array [size - 1:0];
