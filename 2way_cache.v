@@ -21,6 +21,7 @@
 	reg [31:0] data_array [size-1:0];  // internal storage
 	reg valid_array [size-1:0];	
 	reg [31-index_size+1:0] tag_array [size-1:0];
+	reg offset_array [size-1:0];
 	
 	reg [31-index_size+1:0] tag;  //divide adress on tag and index
 	reg [index_size-1:0] set_index;
@@ -34,6 +35,7 @@
 	reg ram_wr;  
 	reg clk_ram;
 	wire ram_response; // check whether RAM is end it's work
+	reg block_offset;
 	
 	reg is_missrate_reg;
 	reg write_reg; //register for choose, which block rewrite	
@@ -72,8 +74,9 @@
 			wr_reg = wr;
 		
 			//caculating of tag and index
-			tag <= addr >> index_size;
-			set_index = addr;
+			tag = addr >> index_size;
+			set_index = addr << 1;
+			block_offset = addr;
 			
 			if (wr)
 			begin
@@ -104,14 +107,14 @@
 			else		
 			begin
 				//put in free place in cache block
-				if (valid_array[set_index*2] && tag == tag_array[set_index*2])
+				if (valid_array[set_index*2] && tag == tag_array[set_index*2]  && block_offset == offset_array[set_index*2])
 				begin
 					is_missrate_reg = 0;
 				
 					out_data = data_array[set_index*2];					
 					response_reg = 1;
 				end
-				else if (valid_array[set_index*2+1] && tag == tag_array[set_index*2+1])
+				else if (valid_array[set_index*2+1] && tag == tag_array[set_index*2+1] && block_offset == offset_array[set_index*2+1])
 				begin
 					is_missrate_reg = 0;
 				
