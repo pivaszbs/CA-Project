@@ -1,0 +1,76 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dD:/intelFPGA_lite/17.1/Project/Test_2/simulation/modelsim
+vcache_4way
+Z1 !s110 1524769538
+!i10b 1
+!s100 ED9l[^7G`<YlXz1^:cWeV3
+Ifhg]3GCX3SQd3OD:K9Fg20
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1524769373
+8D:/intelFPGA_lite/17.1/Project/Test_2/cache_4way.v
+FD:/intelFPGA_lite/17.1/Project/Test_2/cache_4way.v
+L0 1
+Z3 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z4 !s108 1524769538.000000
+!s107 D:/intelFPGA_lite/17.1/Project/Test_2/cache_4way.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/intelFPGA_lite/17.1/Project/Test_2|D:/intelFPGA_lite/17.1/Project/Test_2/cache_4way.v|
+!i113 1
+Z5 o-vlog01compat -work work
+Z6 !s92 -vlog01compat -work work +incdir+D:/intelFPGA_lite/17.1/Project/Test_2
+Z7 tCvgOpt 0
+vram
+R1
+!i10b 1
+!s100 _g3o^X[gmoboCEc7;=Q^Z1
+IQ9;NP?zYmfc`U4^MHcQjh0
+R2
+R0
+w1524682591
+8D:/intelFPGA_lite/17.1/Project/Test_2/ram.v
+FD:/intelFPGA_lite/17.1/Project/Test_2/ram.v
+L0 1
+R3
+r1
+!s85 0
+31
+R4
+!s107 D:/intelFPGA_lite/17.1/Project/Test_2/ram.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/intelFPGA_lite/17.1/Project/Test_2|D:/intelFPGA_lite/17.1/Project/Test_2/ram.v|
+!i113 1
+R5
+R6
+R7
+vtest_2
+R1
+!i10b 1
+!s100 mgWcV>7:OBO9F[GI695<G2
+Icj4j1SO?l?zX0QX@BHJ>Z1
+R2
+R0
+w1524767613
+8D:/intelFPGA_lite/17.1/Project/Test_2/test_2.v
+FD:/intelFPGA_lite/17.1/Project/Test_2/test_2.v
+L0 1
+R3
+r1
+!s85 0
+31
+R4
+!s107 D:/intelFPGA_lite/17.1/Project/Test_2/test_2.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/intelFPGA_lite/17.1/Project/Test_2|D:/intelFPGA_lite/17.1/Project/Test_2/test_2.v|
+!i113 1
+R5
+R6
+R7

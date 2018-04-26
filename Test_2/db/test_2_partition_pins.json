@@ -1,0 +1,133 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "out_addr[0]",
+					"strict" : false
+				},
+				{
+					"name" : "out_addr[1]",
+					"strict" : false
+				},
+				{
+					"name" : "out_addr[2]",
+					"strict" : false
+				},
+				{
+					"name" : "out_addr[3]",
+					"strict" : false
+				},
+				{
+					"name" : "out_addr[4]",
+					"strict" : false
+				},
+				{
+					"name" : "out_addr[5]",
+					"strict" : false
+				},
+				{
+					"name" : "out_addr[6]",
+					"strict" : false
+				},
+				{
+					"name" : "out_data[0]",
+					"strict" : false
+				},
+				{
+					"name" : "out_data[1]",
+					"strict" : false
+				},
+				{
+					"name" : "out_write_mode",
+					"strict" : false
+				},
+				{
+					"name" : "first_bit[0]",
+					"strict" : false
+				},
+				{
+					"name" : "first_bit[3]",
+					"strict" : false
+				},
+				{
+					"name" : "first_bit[4]",
+					"strict" : false
+				},
+				{
+					"name" : "first_bit[5]",
+					"strict" : false
+				},
+				{
+					"name" : "second_bit[0]",
+					"strict" : false
+				},
+				{
+					"name" : "second_bit[3]",
+					"strict" : false
+				},
+				{
+					"name" : "second_bit[4]",
+					"strict" : false
+				},
+				{
+					"name" : "second_bit[5]",
+					"strict" : false
+				},
+				{
+					"name" : "second_bit[7]",
+					"strict" : false
+				},
+				{
+					"name" : "addr[0]",
+					"strict" : false
+				},
+				{
+					"name" : "addr[1]",
+					"strict" : false
+				},
+				{
+					"name" : "addr[2]",
+					"strict" : false
+				},
+				{
+					"name" : "addr[3]",
+					"strict" : false
+				},
+				{
+					"name" : "addr[4]",
+					"strict" : false
+				},
+				{
+					"name" : "addr[5]",
+					"strict" : false
+				},
+				{
+					"name" : "addr[6]",
+					"strict" : false
+				},
+				{
+					"name" : "data[0]",
+					"strict" : false
+				},
+				{
+					"name" : "data[1]",
+					"strict" : false
+				},
+				{
+					"name" : "write_mode",
+					"strict" : false
+				},
+				{
+					"name" : "clk",
+					"strict" : false
+				},
+				{
+					"name" : "switch",
+					"strict" : false
+				}
+			]
+		}
+	]
+}
