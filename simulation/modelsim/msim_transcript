@@ -10,18 +10,18 @@
 # ** Warning: Copied C:\altera\12.1\modelsim_ase\win32aloem/../modelsim.ini to modelsim.ini.
 #          Updated modelsim.ini.
 # 
-# vlog -vlog01compat -work work +incdir+C:/Repositories/CA-Project {C:/Repositories/CA-Project/cache_example.v}
+# vlog -vlog01compat -work work +incdir+C:/Repositories/CA-Project {C:/Repositories/CA-Project/cache.v}
 # Model Technology ModelSim ALTERA vlog 10.1b Compiler 2012.04 Apr 27 2012
-# -- Compiling module cache_example
+# -- Compiling module cache
 # 
 # Top level modules:
-# 	cache_example
-# vlog -vlog01compat -work work +incdir+C:/Repositories/CA-Project {C:/Repositories/CA-Project/2way_cache.v}
+# 	cache
+# vlog -vlog01compat -work work +incdir+C:/Repositories/CA-Project {C:/Repositories/CA-Project/rate_tb.v}
 # Model Technology ModelSim ALTERA vlog 10.1b Compiler 2012.04 Apr 27 2012
-# -- Compiling module cache_2way
+# -- Compiling module rate_tb
 # 
 # Top level modules:
-# 	cache_2way
+# 	rate_tb
 # vlog -vlog01compat -work work +incdir+C:/Repositories/CA-Project {C:/Repositories/CA-Project/ram.v}
 # Model Technology ModelSim ALTERA vlog 10.1b Compiler 2012.04 Apr 27 2012
 # -- Compiling module ram
@@ -29,30 +29,22 @@
 # Top level modules:
 # 	ram
 # 
-vsim -voptargs=+acc work.cache_example
-# vsim -voptargs=+acc work.cache_example 
-# Loading work.cache_example
-# Loading work.cache_2way
+vsim -voptargs=+acc work.rate_tb
+# vsim -voptargs=+acc work.rate_tb 
+# Loading work.rate_tb
+# Loading work.cache
 # Loading work.ram
-# ** Warning: (vsim-3017) C:/Repositories/CA-Project/cache_example.v(17): [TFMPC] - Too few port connections. Expected 7, found 6.
+# ** Warning: (vsim-3017) C:/Repositories/CA-Project/rate_tb.v(20): [TFMPC] - Too few port connections. Expected 7, found 6.
 # 
-#         Region: /cache_example/cache_2way
-# ** Warning: (vsim-3722) C:/Repositories/CA-Project/cache_example.v(17): [TFMPC] - Missing connection for port 'response'.
+#         Region: /rate_tb/cache
+# ** Warning: (vsim-3722) C:/Repositories/CA-Project/rate_tb.v(20): [TFMPC] - Missing connection for port 'response'.
 # 
-add wave -position insertpoint sim:/cache_example/*
-run
-run
-run
-run
-run
-restart -f
-# ** Warning: (vsim-3017) C:/Repositories/CA-Project/cache_example.v(17): [TFMPC] - Too few port connections. Expected 7, found 6.
-# 
-#         Region: /cache_example/cache_2way
-# ** Warning: (vsim-3722) C:/Repositories/CA-Project/cache_example.v(17): [TFMPC] - Missing connection for port 'response'.
-# 
-add wave -position insertpoint sim:/cache_example/cache_2way/*
-run
-run
-run
-run
+# ** Warning: Design size of 3 instances exceeds ModelSim ALTERA recommended capacity.
+# This may because you are loading cell libraries which are not recommended with
+# the ModelSim Altera version. Expect performance to be adversely affected.
+add wave -position insertpoint sim:/rate_tb/*
+run -all
+# ** Note: $finish    : C:/Repositories/CA-Project/rate_tb.v(31538)
+#    Time: 6301 ns  Iteration: 0  Instance: /rate_tb
+# 1
+# Break in Module rate_tb at C:/Repositories/CA-Project/rate_tb.v line 31538

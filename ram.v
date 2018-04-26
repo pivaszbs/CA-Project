@@ -20,7 +20,7 @@ module ram (
 	output [31:0] out
 );		
 
-	parameter size = 1024;
+	parameter size = 4096;
 
 	//data storage
 	reg [31:0] ram [size-1:0];

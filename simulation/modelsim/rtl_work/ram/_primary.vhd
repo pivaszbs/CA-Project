@@ -2,7 +2,7 @@ library verilog;
 use verilog.vl_types.all;
 entity ram is
     generic(
-        size            : integer := 1024
+        size            : integer := 4096
     );
     port(
         data            : in     vl_logic_vector(31 downto 0);
