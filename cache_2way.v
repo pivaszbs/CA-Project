@@ -20,7 +20,7 @@
 	
 	reg [31:0] data_array [size-1:0];  // internal storage
 	reg valid_array [size-1:0];	
-	reg [31-index_size+1:0] tag_array [size-1:0];
+	reg [31-index_size-1:0] tag_array [size-1:0];
 	reg offset_array [size-1:0];
 	
 	reg [31-index_size+1:0] tag;  //divide adress on tag and index
@@ -38,7 +38,7 @@
 	reg block_offset;
 	
 	reg is_missrate_reg;
-	reg write_reg; //register for choose, which block rewrite	
+	reg write_reg [31:0]; //register for choose, which block rewrite	
 	
 	//RAM module
 	ram ram(
@@ -64,7 +64,11 @@
 			valid_array[i] = 0;
 			offset_array[i] = 0;
 		end
-		write_reg = 0;
+		
+		for (i = 0; i <32; i=i+1)
+		begin
+			write_reg[i] = 0;
+		end
 		is_missrate_reg = 0;
 	end
 	
@@ -108,12 +112,12 @@
 				end
 				else
 				begin
-					data_array[set_index*2+write_reg] = data;
-					tag_array[set_index*2+write_reg] = tag;
-					valid_array[set_index*2+write_reg] = 1;
-					write_reg = ~write_reg;
-					offset_array[set_index*2+write_reg] = block_offset;
-				end		
+					data_array[set_index*2+write_reg[set_index]] = data;
+					tag_array[set_index*2+write_reg[set_index]] = tag;
+					valid_array[set_index*2+write_reg[set_index]] = 1;
+					offset_array[set_index*2+write_reg[set_index]] = block_offset;
+					write_reg[set_index] = ~write_reg[set_index];
+				end						
 			end
 			else		
 			begin
@@ -135,12 +139,10 @@
 				else
 				begin
 					is_missrate_reg = 1;
-					valid_array[set_index*2+write_reg] = 0;
 					// updating ram inputs on given cache inputs
 					ram_data = data;
 					ram_addr = addr;
-					ram_wr = wr;					
-					write_reg = ~write_reg;
+					ram_wr = wr;	
 				end
 			end
 		end
@@ -154,19 +156,27 @@
 				// if it is reading mode, then updates cache data and output
 				if (wr == 0)
 				begin
-					if (valid_array[set_index*2]&&!valid_array[set_index*2+1])
+					if (!valid_array[set_index*2+1])
 					begin
 						data_array[set_index*2+1] = ram_out;
 						tag_array[set_index*2+1] = tag;				
 						valid_array[set_index*2+1] = 1;
 						offset_array[set_index*2+1] = block_offset;						
 					end
-					else
+					else if(!valid_array[set_index*2])
 					begin
 						data_array[set_index*2] = ram_out;
 						tag_array[set_index*2] = tag;				
 						valid_array[set_index*2] = 1;						
 						offset_array[set_index*2] = block_offset;
+					end
+					else
+					begin
+						data_array[set_index*2+write_reg[set_index]] = ram_out;
+						tag_array[set_index*2+write_reg[set_index]] = tag;				
+						valid_array[set_index*2+write_reg[set_index]] = 1;						
+						offset_array[set_index*2+write_reg[set_index]] = block_offset;
+						write_reg[set_index] = ~write_reg[set_index];
 					end
 					out_data = ram_out;				
 				end

@@ -13,21 +13,20 @@ module cache_4way(
 	reg [31:0] data_reg;
 	reg [31:0] addr_reg;
 	reg wr_reg;
-	reg [1:0] offset_reg;
 	
 	reg [31:0] data_array [size-1:0];
 	reg valid_array [size-1:0];	
 	reg [31-index_size-2:0] tag_array [size-1:0];
 	reg [1:0] offset_array [size-1:0];
 	
-	reg [31-index_size+2:0] tag;
+	reg [31-index_size-2:0] tag;
 	reg [index_size-1:0] set_index;
 	reg [31:0] out_data;
 	reg [1:0] block_offset;
 	reg response_reg;		
 	
 	reg miss_reg;
-	reg [1:0] write_reg;
+	reg [1:0] write_reg [15:0];
 	
 	reg [31:0] ram_data;
 	reg [31:0] ram_addr;
@@ -50,22 +49,26 @@ module cache_4way(
 		addr_reg = 0;
 		wr_reg = 0;
 		out_data = 0;
+		miss_reg = 0;
 		for (i = 0; i < size; i=i+1)
 		begin
 			data_array[i] = 0;
 			tag_array[i] = 0;
 			valid_array[i] = 0;
+			offset_array[i] = 0;
 		end
-		
+		for (i = 0; i<16; i=i+1)
+		begin
+			write_reg[i] = 0;
+		end
 		response_reg = 1;
-		write_reg = 0;		
 	end		
 	
 	
 	always @(posedge clk)
 	begin
 		// if any input changed
-		if (data != data_reg || addr != addr_reg || wr != wr_reg || block_offset != offset_reg)
+		if (data != data_reg || addr != addr_reg || wr != wr_reg)
 		begin
 			// setting response register to 0
 			response_reg = 0;
@@ -75,7 +78,7 @@ module cache_4way(
 			addr_reg = addr;
 			wr_reg = wr;
 	
-			tag = addr >> index_size;
+			tag = addr >> (index_size+2);
 			set_index = addr >> 2;
 			block_offset = addr;
 	
@@ -100,14 +103,14 @@ module cache_4way(
 					offset_array[set_index*4+1] = block_offset;
 				end
 				
-				else if (!valid_array[set_index + 2])
+				else if (!valid_array[set_index*4 + 2])
 				begin
 					data_array[set_index*4+2] = data;
 					tag_array[set_index*4+2] = tag;
 					valid_array[set_index*4+2] = 1;
 					offset_array[set_index*4+2] = block_offset;
 				end
-				else if (!valid_array[set_index+3])
+				else if (!valid_array[set_index*4+3])
 				begin
 					data_array[set_index*4+3] = data;
 					tag_array[set_index*4+3] = tag;
@@ -116,11 +119,11 @@ module cache_4way(
 				end
 				else
 				begin
-					data_array[set_index*4+write_reg] = data;
-					tag_array[set_index*4+write_reg] = tag;
-					valid_array[set_index*4+write_reg] = 1;
-					offset_array[set_index*4+write_reg] = block_offset;
-					write_reg = write_reg + 1;
+					data_array[set_index*4+write_reg[set_index]] = data;
+					tag_array[set_index*4+write_reg[set_index]] = tag;
+					valid_array[set_index*4+write_reg[set_index]] = 1;
+					offset_array[set_index*4+write_reg[set_index]] = block_offset;
+					write_reg[set_index] = write_reg[set_index] + 1;
 				end					
 			end
 			else
@@ -143,7 +146,7 @@ module cache_4way(
 				begin					
 					miss_reg = 0;
 				
-					out_data = data_array[set_index+2];					
+					out_data = data_array[set_index*4+2];					
 					response_reg = 1;
 				end
 				else if ((valid_array[set_index*4+3]) && (tag == tag_array[set_index*4+3]) && (block_offset == offset_array[set_index*4+3]))
@@ -155,12 +158,10 @@ module cache_4way(
 				end
 				else
 					miss_reg = 1;
-					valid_array[set_index*4+write_reg] = 0;
 					// updating ram inputs on given cache inputs
 					ram_data = data;
 					ram_addr = addr;
 					ram_wr = wr;
-					write_reg = write_reg + 1;
 			end
 		end
 		else
@@ -168,8 +169,6 @@ module cache_4way(
 			// waiting till ram will finish reading/writing
 			if (ram_response && ~response_reg)
 			begin
-				// since all operations are finished, sets response state to 1
-				response_reg = 1;
 				if (wr == 0)
 				begin
 					if (!valid_array[set_index*4+3])
@@ -196,7 +195,7 @@ module cache_4way(
 						valid_array[set_index*4+1] = 1;
 					offset_array[set_index*4+1] = block_offset;
 					end
-					else
+					else if (!valid_array[set_index*4])
 					begin															
 						data_array[set_index*4] = ram_out;
 						out_data = ram_out;				
@@ -204,7 +203,18 @@ module cache_4way(
 						valid_array[set_index*4] = 1;
 						offset_array[set_index*4] = block_offset;			
 					end
-				end
+					else
+					begin
+						data_array[set_index*4+write_reg[set_index]] = ram_out;
+						out_data = ram_out;				
+						tag_array[set_index*4+write_reg[set_index]] = tag;				
+						valid_array[set_index*4+write_reg[set_index]] = 1;
+						offset_array[set_index*4+write_reg[set_index]] = block_offset;
+						write_reg[set_index] = write_reg[set_index] + 1;
+					end
+				end				
+				// since all operations are finished, sets response state to 1
+				response_reg = 1;
 			end
 		end
 	end
