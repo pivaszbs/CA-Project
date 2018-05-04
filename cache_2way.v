@@ -23,7 +23,7 @@
 	reg [31-index_size-1:0] tag_array [size-1:0];
 	reg offset_array [size-1:0];
 	
-	reg [31-index_size+1:0] tag;  //divide adress on tag and index
+	reg [31-index_size-1:0] tag;  //divide adress on tag and index
 	reg [index_size-1:0] set_index;
 	reg [31:0] out_data;
 	
